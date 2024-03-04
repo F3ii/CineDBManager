@@ -3,6 +3,7 @@ package cinesdbmanager.Servicio;
 import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Repositorio.ISalaRepositorio;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +24,13 @@ public class SalaServicio {
         return true;
     }
     public List<Sala> listarTodo(){return salaRepositorio.findAll();}
+    public boolean eliminarSalaPorID(Integer id) {
+        Sala borrado = salaRepositorio.getReferenceById(id);
+        try {
+            salaRepositorio.delete(borrado);
+        }catch (ConstraintViolationException e ){
+            return false;
+        }
+        return true;
+    }
 }

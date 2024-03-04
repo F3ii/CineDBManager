@@ -2,8 +2,8 @@ package cinesdbmanager.Servicio;
 
 import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Repositorio.ICineRepositorio;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +24,13 @@ public class CineServicio {
     }
     public List<Cine>listarTodo(){return cineRepositorio.findAll();}
 
-    public Cine buscarCinePorID(Cine id){
-        return cineRepositorio.getReferenceById(id.getIdCine());
+    public boolean eliminarCinePorID(Integer id) {
+        Cine borrado = cineRepositorio.getReferenceById(id);
+        try {
+            cineRepositorio.delete(borrado);
+        }catch (ConstraintViolationException e ){
+            return false;
+        }
+        return true;
     }
 }

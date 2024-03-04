@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f70ac6c9-ff53-4f5b-b000-ea1c442cc6e2" name="Changes" comment="" />
+    <list default="true" id="f70ac6c9-ff53-4f5b-b000-ea1c442cc6e2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/CineDBManager/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CineDBManager/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CineDBManager/src/main/java/cinesdbmanager/CinesDbManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineDBManager/src/main/java/cinesdbmanager/CinesDbManagerApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,25 +16,25 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2dEbpuQWWhHopSnCxVPxu29cGnD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Jose/Desktop/project/CineDBManager/CineDBManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jose/Desktop/project/CineDBManager/CineDBManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,6 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709576373870</updated>
       <workItem from="1709576377893" duration="37000" />
+      <workItem from="1709577937968" duration="28000" />
     </task>
     <servers />
   </component>

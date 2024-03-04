@@ -52,7 +52,6 @@ public class CinesDbManagerApplication {
         pelicula.setPgEdad(13);
         AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
 
-        //Pruebas eliminar
 
         //Listar todo
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
@@ -78,6 +77,8 @@ public class CinesDbManagerApplication {
             System.out.println(s1);
         });
         System.out.println("Cambio realizado");
+        //Pruebas eliminar
+
     }
 
 }
