@@ -78,6 +78,7 @@ public class CinesDbManagerApplication {
         });
         System.out.println("Cambio realizado");
         //Pruebas eliminar
+        System.out.println("Prueba rama2");
 
     }
 
