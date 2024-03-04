@@ -200,7 +200,44 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSesionesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        // Hay que probar, no se si esto funciona bien
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
+        switch(screen){
+            case "cine":{
+                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("Nombre: ", "Direccion: ", thisItemID, 
+                        thisItemNombre, thisItemDireccion);
+                egui.setVisible(true);
+                break;
+            }
+            case "sala":{
+                String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("VIP: ", "Butacas: ", thisItemID, 
+                        thisItemVIP, thisItemButacas);
+                egui.setVisible(true);
+                break;
+            }
+            case "sesion":{
+                String thisItemPrecio = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDateTime = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("Precio de Entrada: ", "Fecha y Hora: ", 
+                        thisItemID, thisItemPrecio, thisItemDateTime);
+                egui.setVisible(true);
+                break;
+            }
+            case "pelicula":{
+                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                String thisItemEdadPG = (String) tableModel.getValueAt(jTable1.getSelectedRow(),3);
+                EditGUI egui = new EditGUI("Nombre: ", "Director", "Edad PG: ", 
+                        thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
+                egui.setVisible(true);
+                break;
+            }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -231,6 +268,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
+        // Llamar a borrar por ID con ID = thisItemID
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
