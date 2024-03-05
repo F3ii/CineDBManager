@@ -8,28 +8,40 @@ package cdbm_ant;
  *
  * @author danie
  */
-public class CreateGUI extends javax.swing.JFrame {
+public class EditGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CreateGUI
      */
-    public CreateGUI() {
+    public EditGUI() {
         initComponents();
     }
     
-    public CreateGUI(String label1, String label2) {
+    public EditGUI(String label1, String label2, 
+            String tf0, String tf1, String tf2) {
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
+        
+        lblDataID.setText(tf0);
+        tfData1.setText(tf1);
+        tfData2.setText(tf2);
+        
         lblData3.setVisible(false);
         tfData3.setVisible(false);
     }
     
-    public CreateGUI(String label1, String label2, String label3) {
+    public EditGUI(String label1, String label2, String label3,
+            String tf0, String tf1, String tf2, String tf3) {
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        
+        lblDataID.setText(tf0);
+        tfData1.setText(tf1);
+        tfData2.setText(tf2);
+        tfData3.setText(tf3);
     }
     
     
@@ -53,6 +65,8 @@ public class CreateGUI extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         btnAccept = new javax.swing.JButton();
         lblGenericMsg = new javax.swing.JLabel();
+        lblData0 = new javax.swing.JLabel();
+        lblDataID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,7 +94,11 @@ public class CreateGUI extends javax.swing.JFrame {
             }
         });
 
-        lblGenericMsg.setText("Añadir un nuevo elemento");
+        lblGenericMsg.setText("Actualizar elemento");
+
+        lblData0.setText("ID");
+
+        lblDataID.setText("ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,12 +110,12 @@ public class CreateGUI extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblGenericMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGenericMsg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblData2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,7 +124,11 @@ public class CreateGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfData1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfData2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfData3))))
+                            .addComponent(tfData3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblData0, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDataID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,7 +138,11 @@ public class CreateGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(lblGenericMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblData0)
+                    .addComponent(lblDataID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData1))
@@ -166,20 +192,21 @@ public class CreateGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateGUI().setVisible(true);
+                new EditGUI().setVisible(true);
             }
         });
     }
@@ -188,9 +215,11 @@ public class CreateGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblData0;
     private javax.swing.JLabel lblData1;
     private javax.swing.JLabel lblData2;
     private javax.swing.JLabel lblData3;
+    private javax.swing.JLabel lblDataID;
     private javax.swing.JLabel lblGenericMsg;
     private javax.swing.JTextField tfData1;
     private javax.swing.JTextField tfData2;

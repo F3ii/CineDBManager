@@ -30,10 +30,10 @@
               <Component id="btnCancel" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblGenericMsg" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblGenericMsg" alignment="1" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -48,6 +48,11 @@
                           <Component id="tfData3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblData0" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblDataID" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -60,7 +65,12 @@
               <Component id="jLabel1" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace pref="18" max="32767" attributes="0"/>
               <Component id="lblGenericMsg" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblData0" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDataID" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfData1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -134,7 +144,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblGenericMsg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir un nuevo elemento"/>
+        <Property name="text" type="java.lang.String" value="Actualizar elemento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblData0">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDataID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
   </SubComponents>
