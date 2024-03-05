@@ -94,7 +94,7 @@ public class EditGUI extends javax.swing.JFrame {
             }
         });
 
-        lblGenericMsg.setText("Añadir un nuevo elemento");
+        lblGenericMsg.setText("Actualizar elemento");
 
         lblData0.setText("ID");
 

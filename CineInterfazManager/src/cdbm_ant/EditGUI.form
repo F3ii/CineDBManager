@@ -144,7 +144,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblGenericMsg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir un nuevo elemento"/>
+        <Property name="text" type="java.lang.String" value="Actualizar elemento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblData0">
