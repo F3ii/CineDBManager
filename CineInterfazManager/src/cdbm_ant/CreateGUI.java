@@ -80,7 +80,7 @@ public class CreateGUI extends javax.swing.JFrame {
             }
         });
 
-        lblGenericMsg.setText("Añadir un nuevo elemento");
+        lblGenericMsg.setText("Actualizar elemento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
