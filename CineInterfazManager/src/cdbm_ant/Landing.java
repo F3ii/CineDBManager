@@ -34,18 +34,27 @@ public class Landing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        btnLanding = new javax.swing.JButton();
+        jPanel1 = new ImagenLanding();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        btnLanding.setBackground(new java.awt.Color(83, 60, 65));
+        btnLanding.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        btnLanding.setForeground(new java.awt.Color(253, 184, 75));
+        btnLanding.setText("ACCEDER >");
+        btnLanding.setToolTipText("");
+        btnLanding.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,7 +65,7 @@ public class Landing extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnLanding, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -64,11 +73,18 @@ public class Landing extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnLanding, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLandingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingActionPerformed
+        // TODO add your handling code here:
+        Interfaz mainGui = new Interfaz();
+        mainGui.setVisible(true);
+        this.setVisible(false);       
+    }//GEN-LAST:event_btnLandingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,21 +122,22 @@ public class Landing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLanding;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    /*class ImagenLanding extends JPanel{
+    class ImagenLanding extends JPanel{
         //ATRIBUTO
         private Image imagen;
-        //METODOS
-        public void paint(Graphics g){
-            //imagen= new ImageIcon(getClass().getResource("../../res/DBManager.png")).getImage();
-            g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+        String directorio = "/DBManager.png";
+        
+        public void paint (Graphics g){
+            imagen = new ImageIcon(getClass().getResource(directorio)).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
-
         }
-    }*/
+
+    }
 
 }
