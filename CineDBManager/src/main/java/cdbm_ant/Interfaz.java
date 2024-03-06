@@ -4,14 +4,21 @@
  */
 package cdbm_ant;
 
+import cinesdbmanager.Context.AppConfig;
+import cinesdbmanager.Modelo.Cine;
+import cinesdbmanager.Modelo.Pelicula;
+import cinesdbmanager.Modelo.Sala;
+import cinesdbmanager.Modelo.Sesion;
+
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
  * @author danie
  */
 public class Interfaz extends javax.swing.JFrame {
-
+    private DefaultTableModel tableModel = new DefaultTableModel();
     String screen = "cine"; //Valores permitidos ("cine", "sala", "sesion", "pelicula")
     
     /**
@@ -45,7 +52,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -200,7 +207,44 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSesionesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        // Hay que probar, no se si esto funciona bien
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
+        switch(screen){
+            case "cine":{
+                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("Nombre: ", "Direccion: ", thisItemID, 
+                        thisItemNombre, thisItemDireccion);
+                egui.setVisible(true);
+                break;
+            }
+            case "sala":{
+                String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("VIP: ", "Butacas: ", thisItemID, 
+                        thisItemVIP, thisItemButacas);
+                egui.setVisible(true);
+                break;
+            }
+            case "sesion":{
+                String thisItemPrecio = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDateTime = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                EditGUI egui = new EditGUI("Precio de Entrada: ", "Fecha y Hora: ", 
+                        thisItemID, thisItemPrecio, thisItemDateTime);
+                egui.setVisible(true);
+                break;
+            }
+            case "pelicula":{
+                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                String thisItemEdadPG = (String) tableModel.getValueAt(jTable1.getSelectedRow(),3);
+                EditGUI egui = new EditGUI("Nombre: ", "Director", "Edad PG: ", 
+                        thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
+                egui.setVisible(true);
+                break;
+            }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -217,7 +261,7 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sesion":{
-                CreateGUI cgui = new CreateGUI("Precio de Entrada: ", "Fecha y Hora: ");
+                CreateGUI cgui = new CreateGUI("Precio de Entrada: ", "Fecha","Hora");
                 cgui.setVisible(true);
                 break;
             }
@@ -231,6 +275,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
+        // Llamar a borrar por ID con ID = thisItemID
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
@@ -278,28 +325,33 @@ public class Interfaz extends javax.swing.JFrame {
     private void cargarTabla() {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
-        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel = new DefaultTableModel();
         tableModel.addColumn("ID");
         switch(screen){
             case "cine":{
                 tableModel.addColumn("Nombre");
                 tableModel.addColumn("Direccion");
+                verCines();
                 break;
             }
             case "sala":{
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
+                verSalas();
                 break;
             }
             case "sesion":{
                 tableModel.addColumn("Precio de Entrada");
-                tableModel.addColumn("Fecha y Hora");
+                tableModel.addColumn("Fecha");
+                tableModel.addColumn("Hora");
+                verSesion();
                 break;
             }
             case "pelicula":{
                 tableModel.addColumn("Nombre");
                 tableModel.addColumn("Director");
                 tableModel.addColumn("Edad PG");
+                verPeliculas();
                 break;
             }
             
@@ -307,6 +359,48 @@ public class Interfaz extends javax.swing.JFrame {
         
         jTable1.setModel(tableModel);
         
+    }
+    private void verCines(){
+        ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
+        cines.forEach(c -> {
+            tableModel.addRow(new Object[]{
+                    c.getIdCine(),
+                    c.getNombre(),
+                    c.getDireccion()
+            });
+        });
+    }
+    private void verSalas(){
+        ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
+        salas.forEach(s -> {
+            tableModel.addRow(new Object[]{
+                    s.getIdSala(),
+                    s.getVip(),
+                    s.getNºbutacas()
+            });
+        });
+    }
+    private void verSesion(){
+        ArrayList<Sesion>sesiones= (ArrayList<Sesion>) AppConfig.getSesionServicio().listarTodo();
+        sesiones.forEach(s -> {
+            tableModel.addRow(new Object[]{
+                    s.getIdSesion(),
+                    s.getPrecio(),
+                    s.getFecha(),
+                    s.getHora()
+            });
+        });
+    }
+    private void verPeliculas(){
+        ArrayList<Pelicula>peliculas= (ArrayList<Pelicula>) AppConfig.getPeliculaServicio().listarTodo();
+        peliculas.forEach(p -> {
+            tableModel.addRow(new Object[]{
+                    p.getIdPelicula(),
+                    p.getNombre(),
+                    p.getDirector(),
+                    p.getPgEdad()
+            });
+        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCines;

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f70ac6c9-ff53-4f5b-b000-ea1c442cc6e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CineDBManager/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CineDBManager/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CineDBManager/src/main/java/cinesdbmanager/CinesDbManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CineDBManager/src/main/java/cinesdbmanager/CinesDbManagerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +32,15 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Jose/Desktop/project/CineDBManager/CineDBManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jose\Desktop\project\CineDBManager\CineDBManager\src\main\java" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -45,6 +51,8 @@
       <updated>1709576373870</updated>
       <workItem from="1709576377893" duration="37000" />
       <workItem from="1709577937968" duration="28000" />
+      <workItem from="1709741579563" duration="99000" />
+      <workItem from="1709742153214" duration="32000" />
     </task>
     <servers />
   </component>
