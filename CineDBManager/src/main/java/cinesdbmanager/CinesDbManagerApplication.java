@@ -15,10 +15,17 @@ import java.util.ArrayList;
 public class CinesDbManagerApplication {
     public static void main(String[] args) {
         Cine cine=new Cine("asdasd","asdas",12);
-        Sala sala=new Sala(567,true,1);
+        Sala sala=new Sala(1234,1,true,12345);
         Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5,456);
         Pelicula pelicula=new Pelicula("Prueba","Steve",1254,18);
 
+
+
+        //Pruebas Inserccion
+        AppConfig.getCineServicio().insertarCine(cine);
+        AppConfig.getSalaServicio().insertarSala(sala);
+        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+        AppConfig.getSesionServicio().insertSesion(sesion);
         sala.setCineByIdCine(cine);
         ArrayList<Sala>salas=new ArrayList<>();
         salas.add(sala);
@@ -27,13 +34,6 @@ public class CinesDbManagerApplication {
         sesion.setPeliculaByIdPelicula(pelicula);
         ArrayList<Sesion>sesiones=new ArrayList<>();
         sesiones.add(sesion);
-
-        //Pruebas Inserccion
-        AppConfig.getCineServicio().insertarCine(cine);
-        AppConfig.getSalaServicio().insertarSala(sala);
-        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
-        AppConfig.getSesionServicio().insertSesion(sesion);
-
       //PRUEBAS
        // ArrayList<Sala>salas=new ArrayList<>();
         salas.add(sala);

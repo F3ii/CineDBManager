@@ -24,6 +24,9 @@ public class SalaServicio {
         return true;
     }
     public List<Sala> listarTodo(){return salaRepositorio.findAll();}
+    public List<Sala> salaCine(Integer idCine){
+        return salaRepositorio.salaCine(idCine);
+    }
     public boolean eliminarSalaPorID(Integer id) {
         Sala borrado = salaRepositorio.getReferenceById(id);
         try {
