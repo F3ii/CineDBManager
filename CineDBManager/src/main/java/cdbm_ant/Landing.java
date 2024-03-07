@@ -129,7 +129,7 @@ public class Landing extends javax.swing.JFrame {
     class ImagenLanding extends JPanel{
         //ATRIBUTO
         private Image imagen;
-        String directorio = "1.jpg";
+        String directorio = "1.png";
         
         public void paint (Graphics g){
             imagen = new ImageIcon(getClass().getResource(directorio)).getImage();
