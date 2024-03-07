@@ -17,7 +17,7 @@ public class EditGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EditGUI(String label1, String label2, 
+    public EditGUI(String label1, String label2,
             String tf0, String tf1, String tf2) {
         initComponents();
         lblData1.setText(label1);
