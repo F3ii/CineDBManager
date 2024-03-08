@@ -12,6 +12,9 @@ public class Sala {
     @Column(name = "nºbutacas", nullable = true)
     private Integer nºbutacas;
     @Basic
+    @Column(name = "nºsala", nullable = true)
+    private Integer nºsala;
+    @Basic
     @Column(name = "vip", nullable = true)
     private Boolean vip;
     @Id
@@ -26,19 +29,29 @@ public class Sala {
     public Sala() {
     }
 
-    public Sala(Integer nºbutacas, Boolean vip, int idSala, Cine cineByIdCine) {
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala, Cine cineByIdCine) {
         this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
         this.vip = vip;
         this.idSala = idSala;
         this.cineByIdCine = cineByIdCine;
         this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
-    public Sala(Integer nºbutacas, Boolean vip, int idSala) {
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala) {
         this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
         this.vip = vip;
         this.idSala = idSala;
         this.sesionsByIdSala=new ArrayList<Sesion>();
+    }
+
+    public Integer getNºsala() {
+        return nºsala;
+    }
+
+    public void setNºsala(Integer nºsala) {
+        this.nºsala = nºsala;
     }
 
     public Integer getNºbutacas() {

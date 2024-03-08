@@ -15,12 +15,18 @@ public class Cine {
     @Column(name = "nombre", nullable = true, length = 25)
     private String nombre;
     @Id
-    @Column(name = "id_cine", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cine", nullable = true )
     private int idCine;
     @OneToMany(mappedBy = "cineByIdCine")
     private List<Sala> salasByIdCine;
 
     public Cine() {
+    }
+
+    public Cine(String direccion, String nombre) {
+        this.direccion = direccion;
+        this.nombre = nombre;
     }
 
     public Cine(String direccion, String nombre, int idCine) {
