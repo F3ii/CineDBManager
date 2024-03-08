@@ -326,7 +326,7 @@ public class Interfaz extends javax.swing.JFrame {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
         tableModel = new DefaultTableModel();
-        tableModel.addColumn("ID");
+        //tableModel.addColumn("ID");
         switch(screen){
             case "cine":{
                 tableModel.addColumn("Nombre");
@@ -335,6 +335,7 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
+                tableModel.addColumn("NºSala");
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
                 verSalas();
@@ -364,7 +365,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
         cines.forEach(c -> {
             tableModel.addRow(new Object[]{
-                    c.getIdCine(),
+                    //c.getIdCine(),
                     c.getNombre(),
                     c.getDireccion()
             });
@@ -374,7 +375,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
-                    s.getIdSala(),
+                    s.getNºsala(),
                     s.getVip(),
                     s.getNºbutacas()
             });
@@ -384,7 +385,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sesion>sesiones= (ArrayList<Sesion>) AppConfig.getSesionServicio().listarTodo();
         sesiones.forEach(s -> {
             tableModel.addRow(new Object[]{
-                    s.getIdSesion(),
+                    //s.getIdSesion(),
                     s.getPrecio(),
                     s.getFecha(),
                     s.getHora()
@@ -395,7 +396,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Pelicula>peliculas= (ArrayList<Pelicula>) AppConfig.getPeliculaServicio().listarTodo();
         peliculas.forEach(p -> {
             tableModel.addRow(new Object[]{
-                    p.getIdPelicula(),
+                    //p.getIdPelicula(),
                     p.getNombre(),
                     p.getDirector(),
                     p.getPgEdad()

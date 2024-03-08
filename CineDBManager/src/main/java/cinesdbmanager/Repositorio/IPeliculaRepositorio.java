@@ -16,4 +16,6 @@ public interface IPeliculaRepositorio extends JpaRepository<Pelicula,Integer> {
     Pelicula peliculaSesion(
             @Param("idSesion") Integer idSesion
     );
+    @Query("SELECT MAX(p.idPelicula) FROM Pelicula p")
+    Integer maximaPelicula();
 }

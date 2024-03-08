@@ -46,6 +46,14 @@ public class Sala {
         this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
+    public Integer getNºsala() {
+        return nºsala;
+    }
+
+    public void setNºsala(Integer nºsala) {
+        this.nºsala = nºsala;
+    }
+
     public Integer getNºbutacas() {
         return nºbutacas;
     }

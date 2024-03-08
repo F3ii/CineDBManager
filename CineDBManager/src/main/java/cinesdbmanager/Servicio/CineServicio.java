@@ -23,7 +23,9 @@ public class CineServicio {
         return true;
     }
     public List<Cine>listarTodo(){return cineRepositorio.findAll();}
-
+    public Integer idCineMaximo(){
+        return cineRepositorio.maximoCine();
+    }
     public boolean eliminarCinePorID(Integer id) {
         Cine borrado = cineRepositorio.getReferenceById(id);
         try {

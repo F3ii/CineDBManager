@@ -23,6 +23,9 @@ public class SalaServicio {
         }
         return true;
     }
+    public Integer idSalaMaximo(){
+        return salaRepositorio.maximaSala();
+    }
     public List<Sala> listarTodo(){return salaRepositorio.findAll();}
     public List<Sala> salaCine(Integer idCine){
         return salaRepositorio.salaCine(idCine);

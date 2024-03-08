@@ -23,6 +23,9 @@ public class PeliculaServicio {
         }
         return true;
     }
+    public Integer idPeliculaMaximo(){
+        return peliculaRepositorio.maximaPelicula();
+    }
     public List<Pelicula> listarTodo(){return peliculaRepositorio.findAll();}
     public boolean eliminarPeliculaPorID(Integer id) {
         Pelicula borrado = peliculaRepositorio.getReferenceById(id);

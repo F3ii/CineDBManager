@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class CinesDbManagerApplication {
     public static void main(String[] args) {
-        Cine cine=new Cine("asdasd","asdas",12);
+        Cine cine=new Cine("asdasd","asdas");
         Sala sala=new Sala(1234,1,true,12345);
         Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5,456);
         Pelicula pelicula=new Pelicula("Prueba","Steve",1254,18);
@@ -23,6 +23,9 @@ public class CinesDbManagerApplication {
 
         //Pruebas Inserccion
         AppConfig.getCineServicio().insertarCine(cine);
+        AppConfig.getCineServicio().insertarCine(new Cine("Calle paco n3","Paquiño"));
+        AppConfig.getCineServicio().insertarCine(new Cine("Calle marcial","Postgres"));
+        AppConfig.getCineServicio().insertarCine(new Cine("Plaza 3","Pilili"));
         AppConfig.getSalaServicio().insertarSala(sala);
         AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
         AppConfig.getSesionServicio().insertSesion(sesion);
@@ -80,7 +83,8 @@ public class CinesDbManagerApplication {
         //Pruebas eliminar
         System.out.println("Prueba rama2");
         System.out.println("commit");
-
+        AppConfig.getCineServicio().insertarCine(new Cine("Gran casa","Cinesa"));
+        System.out.println(AppConfig.getCineServicio().idCineMaximo().toString());
     }
 
 }

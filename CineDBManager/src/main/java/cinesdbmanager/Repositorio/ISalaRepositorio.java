@@ -15,4 +15,6 @@ public interface ISalaRepositorio extends JpaRepository<Sala,Integer> {
     List<Sala> salaCine(
             @Param("idCine") Integer idCine
     );
+    @Query("SELECT MAX(s.idSala) FROM Sala s")
+    Integer maximaSala();
 }
