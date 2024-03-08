@@ -16,7 +16,7 @@ public class Cine {
     private String nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cine", nullable = true )
+    @Column(name = "id_cine")
     private int idCine;
     @OneToMany(mappedBy = "cineByIdCine")
     private List<Sala> salasByIdCine;
