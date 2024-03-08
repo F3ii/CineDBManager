@@ -200,18 +200,23 @@ public class Interfaz extends javax.swing.JFrame {
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
         // TODO add your handling code here:
         screen = "sala";
+        btnSesiones.setEnabled(true);
         cargarTabla();
     }//GEN-LAST:event_btnSalasActionPerformed
 
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
         // TODO add your handling code here:
         screen = "cine";
+        btnSesiones.setEnabled(false);
+        btnSalas.setEnabled(true);
         cargarTabla();
     }//GEN-LAST:event_btnCinesActionPerformed
 
     private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
         // TODO add your handling code here:
         screen = "pelicula";
+        btnSesiones.setEnabled(false);
+        btnSalas.setEnabled(false);
         cargarTabla();
     }//GEN-LAST:event_btnPeliculasActionPerformed
 
