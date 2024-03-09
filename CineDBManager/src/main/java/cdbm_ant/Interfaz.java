@@ -391,11 +391,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
-<<<<<<< HEAD
                     s.getNºsala(),
-=======
-                    //s.getIdSala(),
->>>>>>> gui
                     s.getVip(),
                     s.getNºbutacas()
             });
