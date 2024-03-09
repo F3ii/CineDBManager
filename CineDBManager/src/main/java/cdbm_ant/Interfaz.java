@@ -391,6 +391,7 @@ public class Interfaz extends javax.swing.JFrame {
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
                     //s.getIdSala(),
+                    s.getNºsala(),
                     s.getVip(),
                     s.getNºbutacas()
             });
