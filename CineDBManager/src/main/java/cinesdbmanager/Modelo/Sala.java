@@ -7,38 +7,65 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@IdClass(SalaCine_PK.class)
 public class Sala {
     @Basic
     @Column(name = "nºbutacas", nullable = true)
     private Integer nºbutacas;
     @Basic
+    @Column(name = "nºsala", nullable = true)
+    private Integer nºsala;
+    @Basic
     @Column(name = "vip", nullable = true)
     private Boolean vip;
     @Id
-    @Column(name = "id_sala", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_sala")
     private int idSala;
+    @Id
+    @Column(name="id_cine")
+    private int idCine;
+    @MapsId("id_cine")
     @ManyToOne
     @JoinColumn(name = "id_cine", referencedColumnName = "id_cine")
     private Cine cineByIdCine;
-    @OneToMany(mappedBy = "salaByIdSala")
+    @OneToMany(mappedBy = "salaByIdSala",cascade = CascadeType.ALL)
     private List<Sesion> sesionsByIdSala;
 
     public Sala() {
     }
 
-    public Sala(Integer nºbutacas, Boolean vip, int idSala, Cine cineByIdCine) {
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idCine) {
         this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
         this.vip = vip;
-        this.idSala = idSala;
-        this.cineByIdCine = cineByIdCine;
+        this.idCine = idCine;
         this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
-    public Sala(Integer nºbutacas, Boolean vip, int idSala) {
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala, int idCine) {
         this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
         this.vip = vip;
         this.idSala = idSala;
+        this.idCine = idCine;
         this.sesionsByIdSala=new ArrayList<Sesion>();
+    }
+
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip) {
+        this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
+        this.vip = vip;
+        this.sesionsByIdSala=new ArrayList<Sesion>();
+    }
+
+
+    public Integer getNºsala() {
+        return nºsala;
+    }
+
+    public void setNºsala(Integer nºsala) {
+        this.nºsala = nºsala;
     }
 
     public Integer getNºbutacas() {

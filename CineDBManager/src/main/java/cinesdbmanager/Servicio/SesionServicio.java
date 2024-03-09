@@ -1,7 +1,5 @@
 package cinesdbmanager.Servicio;
 
-import cinesdbmanager.Modelo.Cine;
-import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
 import cinesdbmanager.Repositorio.ISesionRepositorio;
 import jakarta.validation.ConstraintViolationException;
@@ -23,6 +21,9 @@ public class SesionServicio {
             sesionRepositorio.save(sesion);
         }
         return true;
+    }
+    public Integer idSesionMaxima(){
+        return sesionRepositorio.maximoSesion();
     }
     public List<Sesion> listarTodo(){return sesionRepositorio.findAll();}
     public boolean eliminarSesionPorID(Integer id) {

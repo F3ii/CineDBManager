@@ -14,10 +14,10 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class CinesDbManagerApplication {
     public static void main(String[] args) {
-        Cine cine=new Cine("asdasd","asdas",12);
-        Sala sala=new Sala(567,true,1);
-        Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5,456);
-        Pelicula pelicula=new Pelicula("Prueba","Steve",1254,18);
+        Cine cine=new Cine("asdasd","asdas");
+        Sala sala=new Sala(1234,1,true,1);
+        Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5);
+        Pelicula pelicula=new Pelicula("Prueba","Steve",18);
 
         sala.setCineByIdCine(cine);
         ArrayList<Sala>salas=new ArrayList<>();
@@ -27,31 +27,32 @@ public class CinesDbManagerApplication {
         sesion.setPeliculaByIdPelicula(pelicula);
         ArrayList<Sesion>sesiones=new ArrayList<>();
         sesiones.add(sesion);
+        pelicula.setSesionsByIdPelicula(sesiones);
 
-        //Pruebas Inserccion
+//        //Pruebas Inserccion
         AppConfig.getCineServicio().insertarCine(cine);
         AppConfig.getSalaServicio().insertarSala(sala);
         AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
         AppConfig.getSesionServicio().insertSesion(sesion);
 
       //PRUEBAS
-       // ArrayList<Sala>salas=new ArrayList<>();
-        salas.add(sala);
-        cine.setSalasByIdCine(salas);
+        ArrayList<Sala>salas2=new ArrayList<>();
+        salas2.add(sala);
+        cine.setSalasByIdCine(salas2);
 
-        //Pruebas update
-        cine.setNombre("Nuevo");
-        AppConfig.getCineServicio().actualizarCine(cine);
-
-        sala.setNºbutacas(45);
-        AppConfig.getSalaServicio().actualizarSala(sala);
-
-        sesion.setPrecio(5.0);
-        AppConfig.getSesionServicio().actualizarSesion(sesion);
-
-        pelicula.setPgEdad(13);
-        AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
-
+//        //Pruebas update
+//        cine.setNombre("Nuevo");
+//        AppConfig.getCineServicio().actualizarCine(cine);
+//
+//        sala.setNºbutacas(45);
+//        AppConfig.getSalaServicio().actualizarSala(sala);
+//
+//        sesion.setPrecio(5.0);
+//        AppConfig.getSesionServicio().actualizarSesion(sesion);
+//
+//        pelicula.setPgEdad(13);
+//        AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
+//
 
         //Listar todo
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
@@ -76,10 +77,10 @@ public class CinesDbManagerApplication {
         salas1.forEach(s1->{
             System.out.println(s1);
         });
-        System.out.println("Cambio realizado");
         //Pruebas eliminar
-        System.out.println("Prueba rama2");
-
+        AppConfig.getCineServicio().eliminarCinePorID(cine.getIdCine());
+        System.out.println("Cine eliminado");
+        System.out.println(AppConfig.getCineServicio().idCineMaximo().toString());
     }
 
 }

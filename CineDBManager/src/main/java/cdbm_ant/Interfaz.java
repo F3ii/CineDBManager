@@ -351,6 +351,7 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
+                tableModel.addColumn("NºSala");
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
                 verSalas();
@@ -390,7 +391,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
-                    //s.getIdSala(),
+                    s.getNºsala(),
                     s.getVip(),
                     s.getNºbutacas()
             });
