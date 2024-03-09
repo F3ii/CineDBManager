@@ -209,12 +209,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // Hay que probar, no se si esto funciona bien
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
+        String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
         switch(screen){
             case "cine":{
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI("Nombre: ", "Direccion: ", thisItemID, 
+                EditGUI egui = new EditGUI("Nombre: ", "Direccion: ", thisItemID,
                         thisItemNombre, thisItemDireccion);
                 egui.setVisible(true);
                 break;

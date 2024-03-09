@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@IdClass(SalaCine_PK.class)
 public class Sala {
     @Basic
     @Column(name = "nºbutacas", nullable = true)
@@ -18,8 +19,13 @@ public class Sala {
     @Column(name = "vip", nullable = true)
     private Boolean vip;
     @Id
-    @Column(name = "id_sala", nullable = false)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_sala")
     private int idSala;
+    @Id
+    @Column(name="id_cine")
+    private int idCine;
+    @MapsId("id_cine")
     @ManyToOne
     @JoinColumn(name = "id_cine", referencedColumnName = "id_cine")
     private Cine cineByIdCine;
@@ -27,6 +33,13 @@ public class Sala {
     private List<Sesion> sesionsByIdSala;
 
     public Sala() {
+    }
+
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip) {
+        this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
+        this.vip = vip;
+        this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
     public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala, Cine cineByIdCine) {

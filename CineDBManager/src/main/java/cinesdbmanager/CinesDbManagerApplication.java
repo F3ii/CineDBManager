@@ -15,20 +15,10 @@ import java.util.ArrayList;
 public class CinesDbManagerApplication {
     public static void main(String[] args) {
         Cine cine=new Cine("asdasd","asdas");
-        Sala sala=new Sala(1234,1,true,12345);
-        Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5,456);
-        Pelicula pelicula=new Pelicula("Prueba","Steve",1254,18);
+        Sala sala=new Sala(1234,1,true);
+        Sesion sesion=new Sesion(new Date(12,3,2024),new Time((long) 12.2),4.5);
+        Pelicula pelicula=new Pelicula("Prueba","Steve",18);
 
-
-
-        //Pruebas Inserccion
-        AppConfig.getCineServicio().insertarCine(cine);
-        AppConfig.getCineServicio().insertarCine(new Cine("Calle paco n3","Paquiño"));
-        AppConfig.getCineServicio().insertarCine(new Cine("Calle marcial","Postgres"));
-        AppConfig.getCineServicio().insertarCine(new Cine("Plaza 3","Pilili"));
-        AppConfig.getSalaServicio().insertarSala(sala);
-        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
-        AppConfig.getSesionServicio().insertSesion(sesion);
         sala.setCineByIdCine(cine);
         ArrayList<Sala>salas=new ArrayList<>();
         salas.add(sala);
@@ -37,6 +27,14 @@ public class CinesDbManagerApplication {
         sesion.setPeliculaByIdPelicula(pelicula);
         ArrayList<Sesion>sesiones=new ArrayList<>();
         sesiones.add(sesion);
+        pelicula.setSesionsByIdPelicula(sesiones);
+
+//        //Pruebas Inserccion
+        AppConfig.getCineServicio().insertarCine(cine);
+        AppConfig.getSalaServicio().insertarSala(sala);
+        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+        AppConfig.getSesionServicio().insertSesion(sesion);
+
       //PRUEBAS
        // ArrayList<Sala>salas=new ArrayList<>();
         salas.add(sala);
@@ -79,11 +77,7 @@ public class CinesDbManagerApplication {
         salas1.forEach(s1->{
             System.out.println(s1);
         });
-        System.out.println("Cambio realizado");
         //Pruebas eliminar
-        System.out.println("Prueba rama2");
-        System.out.println("commit");
-        AppConfig.getCineServicio().insertarCine(new Cine("Gran casa","Cinesa"));
         System.out.println(AppConfig.getCineServicio().idCineMaximo().toString());
     }
 

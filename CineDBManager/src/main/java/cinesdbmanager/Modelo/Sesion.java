@@ -18,16 +18,26 @@ public class Sesion {
     @Column(name = "precio", nullable = true, precision = 2)
     private Double precio;
     @Id
-    @Column(name = "id_sesion", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_sesion")
     private int idSesion;
     @ManyToOne
-    @JoinColumn(name = "id_sala", referencedColumnName = "id_sala")
+    @JoinColumns({
+            @JoinColumn(name = "id_sala", referencedColumnName = "id_sala"),
+            @JoinColumn(name="id_cine", referencedColumnName="id_cine")
+    })
     private Sala salaByIdSala;
     @ManyToOne
     @JoinColumn(name = "id_pelicula", referencedColumnName = "id_pelicula")
     private Pelicula peliculaByIdPelicula;
 
     public Sesion() {
+    }
+
+    public Sesion(Date fecha, Time hora, Double precio) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.precio = precio;
     }
 
     public Sesion(Date fecha, Time hora, Double precio, int idSesion) {
