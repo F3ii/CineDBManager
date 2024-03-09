@@ -2,6 +2,7 @@
 Test set: cinesdbmanager.CinesDbManagerApplicationTests
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.055 s <<< FAILURE! -- in cinesdbmanager.CinesDbManagerApplicationTests
 cinesdbmanager.CinesDbManagerApplicationTests.contextLoads -- Time elapsed: 0.020 s <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@1cca3e8c testClass = cinesdbmanager.CinesDbManagerApplicationTests, locations = [], classes = [cinesdbmanager.CinesDbManagerApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@50378a4, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a6d7e92, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@69504ae9, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@798162bc, org.springframework.boot.test.context.SpringBootTestAnnotation@d6181f96], contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
@@ -102,4 +103,7 @@ Caused by: org.postgresql.util.PSQLException: FATAL: la autentificaci�n passwo
 
 =======
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.440 s -- in cinesdbmanager.CinesDbManagerApplicationTests
+>>>>>>> gui
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.227 s -- in cinesdbmanager.CinesDbManagerApplicationTests
 >>>>>>> gui
