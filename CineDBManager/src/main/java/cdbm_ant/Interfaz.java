@@ -22,10 +22,12 @@ import javax.swing.table.TableColumn;
  */
 public class Interfaz extends javax.swing.JFrame {
     private DefaultTableModel tableModel = new DefaultTableModel();
+    final String separator = " > Sala: ";
     String screen = "cine"; //Valores permitidos ("cine", "sala", "sesion", "pelicula")
-    String cineSel = "Cine Plaza";
-    final String separator = " > ";
-    String salaSel = "3";
+    String cineSel = null;
+    String cineIdSel = null;
+    String salaSel = null;
+    String salaIdSel = null;
     
     /**
      * Creates new form Interfaz
@@ -34,7 +36,7 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         btnCines.doClick();
         this.getContentPane().setBackground(new Color(255,204,95));
-        cargarTabla();
+        //cargarTabla();
     }
 
     /**
@@ -213,15 +215,27 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        if(screen == "cine"){    
+            cineIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
+            cineSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        }
+            salaIdSel = null;
+            salaSel = null;
         btnSesiones.setEnabled(true);
         screen = "sala";
         //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
         cargarTabla();
+        lblCineSel.setText(cineSel);
     }//GEN-LAST:event_btnSalasActionPerformed
 
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
         // TODO add your handling code here:
+        cineSel = ("Todos los cines");
+        cineIdSel = null;
+        salaIdSel = null;
+        salaSel = null;
+        lblCineSel.setText(cineSel);
         screen = "cine";
         btnSesiones.setEnabled(false);
         btnSalas.setEnabled(true);
@@ -238,8 +252,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnSesionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionesActionPerformed
         // TODO add your handling code here:
+        salaIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
+        salaSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();  
         screen = "sesion";
         cargarTabla();
+        lblCineSel.setText(cineSel + separator + salaSel);
     }//GEN-LAST:event_btnSesionesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -289,22 +306,23 @@ public class Interfaz extends javax.swing.JFrame {
         this.setVisible(false);
         switch(screen){
             case "cine":{
-                CreateGUI cgui = new CreateGUI(screen,"Nombre: ", "Direccion: ");
+                CreateGUI cgui = new CreateGUI(this, screen,"Nombre: ", "Direccion: ");
                 cgui.setVisible(true);
                 break;
             }
             case "sala":{
-                CreateGUI cgui = new CreateGUI(screen,"VIP: ", "Butacas: ");
+                CreateGUI cgui = new CreateGUI(this, screen,"VIP: ", "Butacas: ", cineIdSel);
                 cgui.setVisible(true);
                 break;
             }
             case "sesion":{
-                CreateGUI cgui = new CreateGUI(screen,"Precio de Entrada: ", "Fecha","Hora");
+                CreateGUI cgui = new CreateGUI(this, screen,"Precio de Entrada: ",
+                        "Fecha","Hora", cineIdSel, salaIdSel);
                 cgui.setVisible(true);
                 break;
             }
             case "pelicula":{
-                CreateGUI cgui = new CreateGUI(screen,"Nombre: ", "Director", "Edad PG: ");
+                CreateGUI cgui = new CreateGUI(this, screen,"Nombre: ", "Director", "Edad PG: ");
                 cgui.setVisible(true);
                 break;
             }
@@ -395,15 +413,17 @@ public class Interfaz extends javax.swing.JFrame {
                 tableModel.addColumn("NºSala");
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
-                //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
-                verSalas();
-                //lblCineSel.setText(cineSel);                
+                tableModel.addColumn("idCine");
+                verSalas();              
                 break;
             }
             case "sesion":{
                 tableModel.addColumn("Precio de Entrada");
                 tableModel.addColumn("Fecha");
                 tableModel.addColumn("Hora");
+                tableModel.addColumn("Pelicula");
+                tableModel.addColumn("idCine");
+                tableModel.addColumn("idSala");
                 verSesion();
                 break;
             }
@@ -421,6 +441,20 @@ public class Interfaz extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+        if(screen == "sala"){
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(0);
+        }
+        else if(screen == "sesion"){
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(5).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(0);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(6).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(0);
+        }
         
     }
 

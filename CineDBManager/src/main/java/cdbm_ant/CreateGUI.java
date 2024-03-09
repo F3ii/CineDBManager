@@ -16,7 +16,10 @@ import cinesdbmanager.Modelo.Sesion;
  */
 public class CreateGUI extends javax.swing.JFrame {
 
-    String entidad;
+    String entidad; //screen
+    String idCineFK = null;
+    String idSalaFK = null;
+    Interfaz gui; // Mantener la interfaz anterior
     /**
      * Creates new form CreateGUI
      */
@@ -24,20 +27,48 @@ public class CreateGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CreateGUI(String entidad,String label1, String label2) {
+    //Constructor para Cines
+    public CreateGUI(Interfaz gui, String entidad, String label1, String label2) {
+        gui = this.gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
         this.entidad=entidad;
+        
     }
     
-    public CreateGUI(String entidad,String label1, String label2, String label3) {
+    //Constructor para Salas
+    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3) {
+        gui = this.gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        this.entidad=entidad;
+    }
+    
+    //Constructor para Sesiones
+    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK) {
+        gui = this.gui;
+        initComponents();
+        lblData1.setText(label1);
+        lblData2.setText(label2);
+        lblData3.setText(label3);
+        idCineFK = cineFK;
+        this.entidad=entidad;
+    }
+    
+    //Constructor para peliculas
+    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK, String salaFK) {
+        gui = this.gui;
+        initComponents();
+        lblData1.setText(label1);
+        lblData2.setText(label2);
+        lblData3.setText(label3);
+        idCineFK = cineFK;
+        idSalaFK = salaFK;
         this.entidad=entidad;
     }
     
@@ -164,6 +195,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getCineServicio().insertarCine(cine);
                 System.out.println("Nuevo cine insertado");
                 this.dispose();
+                gui.setVisible(true);
                 break;
             case "sala":
 
@@ -171,6 +203,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getSalaServicio().insertarSala(sala);
                 System.out.println("Nueva sala insertada");
                 this.dispose();
+                gui.setVisible(true);
                 break;
             case "sesion":
 
@@ -178,6 +211,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
+                gui.setVisible(true);
                 break;
             case "pelicula":
 
@@ -185,6 +219,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
                 System.out.println("Nueva pelicula insertada");
                 this.dispose();
+                gui.setVisible(true);
                 break;
             default:
                 System.out.println("Error");

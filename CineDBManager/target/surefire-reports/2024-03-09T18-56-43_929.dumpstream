@@ -1,4 +1,4 @@
-# Created at 2024-03-09T13:06:43.405
+# Created at 2024-03-09T18:56:44.037
 Boot Manifest-JAR contains absolute paths in classpath 'D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root
