@@ -139,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblGenericMsg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Actualizar elemento"/>
+        <Property name="text" type="java.lang.String" value="A&#xf1;adir elemento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbVIP">

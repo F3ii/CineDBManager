@@ -311,7 +311,7 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
-                CreateGUI cgui = new CreateGUI(this, screen,"VIP: ", "Butacas: ", cineIdSel);
+                CreateGUI cgui = new CreateGUI(this, screen,"NºSala","VIP: ", "Butacas: ", cineIdSel);
                 cgui.setVisible(true);
                 break;
             }

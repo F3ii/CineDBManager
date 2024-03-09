@@ -37,11 +37,12 @@ public class CreateGUI extends javax.swing.JFrame {
         tfData3.setVisible(false);
         cbVIP.setVisible(false);
         this.entidad = entidad;
+        lblGenericMsg.setText("Añadir " + entidad);
         
     }
     
     //Constructor para Salas
-    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3) {
+    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK) {
         this.gui = gui;
         initComponents();
         lblData1.setText(label1);
@@ -49,22 +50,12 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData3.setText(label3);
         tfData2.setVisible(false);
         cbVIP.setVisible(true);
+        idCineFK = cineFK;
         this.entidad=entidad;
+        lblGenericMsg.setText("Añadir " + entidad);
     }
     
     //Constructor para Sesiones
-    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK) {
-        this.gui = gui;
-        initComponents();
-        lblData1.setText(label1);
-        lblData2.setText(label2);
-        lblData3.setText(label3);
-        cbVIP.setVisible(false);
-        idCineFK = cineFK;
-        this.entidad=entidad;
-    }
-    
-    //Constructor para peliculas
     public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK, String salaFK) {
         this.gui = gui;
         initComponents();
@@ -75,6 +66,19 @@ public class CreateGUI extends javax.swing.JFrame {
         idCineFK = cineFK;
         idSalaFK = salaFK;
         this.entidad=entidad;
+        lblGenericMsg.setText("Añadir " + entidad);
+    }
+    
+    //Constructor para peliculas
+    public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3) {
+        this.gui = gui;
+        initComponents();
+        lblData1.setText(label1);
+        lblData2.setText(label2);
+        lblData3.setText(label3);
+        cbVIP.setVisible(false);
+        this.entidad=entidad;
+        lblGenericMsg.setText("Añadir " + entidad);
     }
     
     
@@ -126,7 +130,7 @@ public class CreateGUI extends javax.swing.JFrame {
             }
         });
 
-        lblGenericMsg.setText("Actualizar elemento");
+        lblGenericMsg.setText("Añadir elemento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,8 +214,8 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sala":
-                Sala sala=new Sala(Integer.valueOf(tfData1.getText()),
-                        Integer.valueOf(tfData2.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
+                Sala sala=new Sala(Integer.valueOf(tfData3.getText()),
+                        Integer.valueOf(tfData1.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
                 AppConfig.getSalaServicio().insertarSala(sala);
                 System.out.println("Nueva sala insertada");
                 this.dispose();
@@ -270,6 +274,7 @@ public class CreateGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CreateGUI().setVisible(true);
+                
             }
         });
     }
