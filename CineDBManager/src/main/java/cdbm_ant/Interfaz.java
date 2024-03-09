@@ -393,7 +393,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // TABLA
     
-    private void cargarTabla() {
+    protected void cargarTabla() {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
         tableModel = new DefaultTableModel();

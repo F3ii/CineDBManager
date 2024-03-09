@@ -29,19 +29,19 @@ public class CreateGUI extends javax.swing.JFrame {
     
     //Constructor para Cines
     public CreateGUI(Interfaz gui, String entidad, String label1, String label2) {
-        gui = this.gui;
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
-        this.entidad=entidad;
+        this.entidad = entidad;
         
     }
     
     //Constructor para Salas
     public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3) {
-        gui = this.gui;
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -51,7 +51,7 @@ public class CreateGUI extends javax.swing.JFrame {
     
     //Constructor para Sesiones
     public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK) {
-        gui = this.gui;
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -62,7 +62,7 @@ public class CreateGUI extends javax.swing.JFrame {
     
     //Constructor para peliculas
     public CreateGUI(Interfaz gui, String entidad,String label1, String label2, String label3, String cineFK, String salaFK) {
-        gui = this.gui;
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -195,6 +195,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getCineServicio().insertarCine(cine);
                 System.out.println("Nuevo cine insertado");
                 this.dispose();
+                gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "sala":
@@ -203,6 +204,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getSalaServicio().insertarSala(sala);
                 System.out.println("Nueva sala insertada");
                 this.dispose();
+                gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "sesion":
@@ -211,6 +213,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
+                gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "pelicula":
@@ -219,6 +222,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
                 System.out.println("Nueva pelicula insertada");
                 this.dispose();
+                gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             default:
