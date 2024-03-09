@@ -35,6 +35,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
+        cbVIP.setVisible(false);
         this.entidad = entidad;
         
     }
@@ -46,6 +47,8 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        tfData2.setVisible(false);
+        cbVIP.setVisible(true);
         this.entidad=entidad;
     }
     
@@ -56,6 +59,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        cbVIP.setVisible(false);
         idCineFK = cineFK;
         this.entidad=entidad;
     }
@@ -67,6 +71,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        cbVIP.setVisible(false);
         idCineFK = cineFK;
         idSalaFK = salaFK;
         this.entidad=entidad;
@@ -93,14 +98,15 @@ public class CreateGUI extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         btnAccept = new javax.swing.JButton();
         lblGenericMsg = new javax.swing.JLabel();
+        cbVIP = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblData1.setText("Nombre");
 
-        lblData2.setText("jLabel2");
+        lblData2.setText("lblData2");
 
-        lblData3.setText("jLabel2");
+        lblData3.setText("lblData3");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -145,8 +151,11 @@ public class CreateGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfData1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfData2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfData3))))
+                            .addComponent(tfData3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfData2)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,7 +172,8 @@ public class CreateGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblData2))
+                    .addComponent(lblData2)
+                    .addComponent(cbVIP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,6 +192,7 @@ public class CreateGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Desaparecer la pantalla
         this.dispose();
+        gui.setVisible(true);
         System.out.println("Cancelado");
     }//GEN-LAST:event_btnCancelActionPerformed
 
@@ -199,8 +210,8 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sala":
-
-                Sala sala=new Sala();
+                Sala sala=new Sala(Integer.valueOf(tfData1.getText()),
+                        Integer.valueOf(tfData2.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
                 AppConfig.getSalaServicio().insertarSala(sala);
                 System.out.println("Nueva sala insertada");
                 this.dispose();
@@ -208,7 +219,6 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sesion":
-
                 Sesion sesion=new Sesion();
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
@@ -217,7 +227,6 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "pelicula":
-
                 Pelicula pelicula=new Pelicula();
                 AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
                 System.out.println("Nueva pelicula insertada");
@@ -226,7 +235,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             default:
-                System.out.println("Error");
+                System.err.println("Error al insertar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -268,6 +277,7 @@ public class CreateGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JCheckBox cbVIP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblData1;
     private javax.swing.JLabel lblData2;

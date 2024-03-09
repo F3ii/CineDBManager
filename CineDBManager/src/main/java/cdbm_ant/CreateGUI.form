@@ -44,8 +44,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="tfData1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfData2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfData3" max="32767" attributes="0"/>
+                          <Component id="tfData3" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cbVIP" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfData2" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -69,6 +73,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfData2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblData2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbVIP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -99,12 +104,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblData2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="text" type="java.lang.String" value="lblData2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblData3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="text" type="java.lang.String" value="lblData3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -136,6 +141,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar elemento"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="cbVIP">
     </Component>
   </SubComponents>
 </Form>

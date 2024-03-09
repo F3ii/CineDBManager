@@ -4,13 +4,22 @@
  */
 package cdbm_ant;
 
+import cinesdbmanager.Context.AppConfig;
+import cinesdbmanager.Modelo.Cine;
+import cinesdbmanager.Modelo.Pelicula;
+import cinesdbmanager.Modelo.Sala;
+import cinesdbmanager.Modelo.Sesion;
+
 /**
  *
  * @author danie
  */
 public class EditGUI extends javax.swing.JFrame {
 
-    String entidad;
+    String entidad; //screen
+    String idCineFK = null;
+    String idSalaFK = null;
+    Interfaz gui; // Mantener la interfaz anterior
     /**
      * Creates new form CreateGUI
      */
@@ -18,6 +27,7 @@ public class EditGUI extends javax.swing.JFrame {
         initComponents();
     }
     
+    // Constructor para Cine
     public EditGUI(String entidad, String label1, String label2,
             String tf0, String tf1, String tf2) {
         initComponents();
@@ -31,9 +41,45 @@ public class EditGUI extends javax.swing.JFrame {
         lblData3.setVisible(false);
         tfData3.setVisible(false);
         
-        entidad = this.entidad;
+        this.entidad = entidad;
     }
     
+    //Constructor para Sala
+    public EditGUI(String entidad, String label1, String label2, String label3,
+            String tf0, String tf1, String tf2, String tf3, String cineFK) {
+        initComponents();
+        lblData1.setText(label1);
+        lblData2.setText(label2);
+        lblData3.setText(label3);
+        
+        lblDataID.setText(tf0);
+        tfData1.setText(tf1);
+        tfData2.setText(tf2);
+        tfData3.setText(tf3);
+        
+        idCineFK = cineFK;
+        this.entidad = entidad;
+    }
+    
+    //Constructor para Sesion
+    public EditGUI(String entidad, String label1, String label2, String label3,
+            String tf0, String tf1, String tf2, String tf3, String cineFK, String salaFK) {
+        initComponents();
+        lblData1.setText(label1);
+        lblData2.setText(label2);
+        lblData3.setText(label3);
+        
+        lblDataID.setText(tf0);
+        tfData1.setText(tf1);
+        tfData2.setText(tf2);
+        tfData3.setText(tf3);
+        
+        idCineFK = cineFK;
+        idSalaFK = salaFK;
+        this.entidad = entidad;
+    }
+    
+    //Constructor para Pelicula
     public EditGUI(String entidad, String label1, String label2, String label3,
             String tf0, String tf1, String tf2, String tf3) {
         initComponents();
@@ -46,7 +92,7 @@ public class EditGUI extends javax.swing.JFrame {
         tfData2.setText(tf2);
         tfData3.setText(tf3);
         
-        entidad = this.entidad;
+        this.entidad = entidad;
     }
     
     
@@ -173,11 +219,44 @@ public class EditGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Desaparecer la pantalla
         this.dispose();
+        System.out.println("Cancelado");
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         // Llamar a crear con los datos
+        switch (entidad) {
+            case "cine":
+                // Insertar codigo para cine
+                System.out.println("Se ha actualizado el cine");
+                this.dispose();
+                gui.cargarTabla();
+                gui.setVisible(true);
+                break;
+            case "sala":
+                // Insertar codigo para sala
+                System.out.println("Se ha actualizado la sala");
+                this.dispose();
+                gui.cargarTabla();
+                gui.setVisible(true);
+                break;
+            case "sesion":
+                // Insertar codigo para sesion
+                System.out.println("Se ha actualizado la sesion");
+                this.dispose();
+                gui.cargarTabla();
+                gui.setVisible(true);
+                break;
+            case "pelicula":
+                // Insertar codigo para cine
+                System.out.println("Se ha actualizado la pelicula");
+                this.dispose();
+                gui.cargarTabla();
+                gui.setVisible(true);
+                break;
+            default:
+                System.err.println("Error al actualizar");
+        }
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     /**
