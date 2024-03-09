@@ -19,7 +19,7 @@ public class Sala {
     @Column(name = "vip", nullable = true)
     private Boolean vip;
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_sala")
     private int idSala;
     @Id
@@ -29,10 +29,27 @@ public class Sala {
     @ManyToOne
     @JoinColumn(name = "id_cine", referencedColumnName = "id_cine")
     private Cine cineByIdCine;
-    @OneToMany(mappedBy = "salaByIdSala")
+    @OneToMany(mappedBy = "salaByIdSala",cascade = CascadeType.ALL)
     private List<Sesion> sesionsByIdSala;
 
     public Sala() {
+    }
+
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idCine) {
+        this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
+        this.vip = vip;
+        this.idCine = idCine;
+        this.sesionsByIdSala=new ArrayList<Sesion>();
+    }
+
+    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala, int idCine) {
+        this.nºbutacas = nºbutacas;
+        this.nºsala = nºsala;
+        this.vip = vip;
+        this.idSala = idSala;
+        this.idCine = idCine;
+        this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
     public Sala(Integer nºbutacas, Integer nºsala, Boolean vip) {
@@ -42,22 +59,6 @@ public class Sala {
         this.sesionsByIdSala=new ArrayList<Sesion>();
     }
 
-    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala, Cine cineByIdCine) {
-        this.nºbutacas = nºbutacas;
-        this.nºsala = nºsala;
-        this.vip = vip;
-        this.idSala = idSala;
-        this.cineByIdCine = cineByIdCine;
-        this.sesionsByIdSala=new ArrayList<Sesion>();
-    }
-
-    public Sala(Integer nºbutacas, Integer nºsala, Boolean vip, int idSala) {
-        this.nºbutacas = nºbutacas;
-        this.nºsala = nºsala;
-        this.vip = vip;
-        this.idSala = idSala;
-        this.sesionsByIdSala=new ArrayList<Sesion>();
-    }
 
     public Integer getNºsala() {
         return nºsala;
