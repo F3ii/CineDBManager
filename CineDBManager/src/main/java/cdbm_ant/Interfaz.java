@@ -13,6 +13,7 @@ import java.awt.Color;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -21,12 +22,16 @@ import java.util.ArrayList;
 public class Interfaz extends javax.swing.JFrame {
     private DefaultTableModel tableModel = new DefaultTableModel();
     String screen = "cine"; //Valores permitidos ("cine", "sala", "sesion", "pelicula")
+    String cineSel = "Cine Plaza";
+    final String separator = " > ";
+    String salaSel = "3";
     
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
+        btnCines.doClick();
         this.getContentPane().setBackground(new Color(255,204,95));
         cargarTabla();
     }
@@ -50,6 +55,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        lblCineSel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,16 +147,15 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        lblCineSel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCineSel.setForeground(new java.awt.Color(83, 60, 65));
+        lblCineSel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCineSel.setText("CINES");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,6 +172,13 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(lblCineSel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +186,9 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCineSel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -198,9 +212,10 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
-        // TODO add your handling code here:
-        screen = "sala";
+        // TODO add your handling code here:        
         btnSesiones.setEnabled(true);
+        screen = "sala";
+        //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
         cargarTabla();
     }//GEN-LAST:event_btnSalasActionPerformed
 
@@ -228,13 +243,14 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // Hay que probar, no se si esto funciona bien
+        this.setVisible(false);
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
         switch(screen){
             case "cine":{
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI("Nombre: ", "Direccion: ", thisItemID,
+                EditGUI egui = new EditGUI(screen,"Nombre: ", "Direccion: ", thisItemID,
                         thisItemNombre, thisItemDireccion);
                 egui.setVisible(true);
                 break;
@@ -242,7 +258,7 @@ public class Interfaz extends javax.swing.JFrame {
             case "sala":{
                 String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI("VIP: ", "Butacas: ", thisItemID, 
+                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID, 
                         thisItemVIP, thisItemButacas);
                 egui.setVisible(true);
                 break;
@@ -250,7 +266,7 @@ public class Interfaz extends javax.swing.JFrame {
             case "sesion":{
                 String thisItemPrecio = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDateTime = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI("Precio de Entrada: ", "Fecha y Hora: ", 
+                EditGUI egui = new EditGUI(screen,"Precio de Entrada: ", "Fecha y Hora: ", 
                         thisItemID, thisItemPrecio, thisItemDateTime);
                 egui.setVisible(true);
                 break;
@@ -259,7 +275,7 @@ public class Interfaz extends javax.swing.JFrame {
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
                 String thisItemEdadPG = (String) tableModel.getValueAt(jTable1.getSelectedRow(),3);
-                EditGUI egui = new EditGUI("Nombre: ", "Director", "Edad PG: ", 
+                EditGUI egui = new EditGUI(screen,"Nombre: ", "Director", "Edad PG: ", 
                         thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
                 egui.setVisible(true);
                 break;
@@ -269,24 +285,25 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         switch(screen){
             case "cine":{
-                CreateGUI cgui = new CreateGUI("Nombre: ", "Direccion: ");
+                CreateGUI cgui = new CreateGUI(screen,"Nombre: ", "Direccion: ");
                 cgui.setVisible(true);
                 break;
             }
             case "sala":{
-                CreateGUI cgui = new CreateGUI("VIP: ", "Butacas: ");
+                CreateGUI cgui = new CreateGUI(screen,"VIP: ", "Butacas: ");
                 cgui.setVisible(true);
                 break;
             }
             case "sesion":{
-                CreateGUI cgui = new CreateGUI("Precio de Entrada: ", "Fecha","Hora");
+                CreateGUI cgui = new CreateGUI(screen,"Precio de Entrada: ", "Fecha","Hora");
                 cgui.setVisible(true);
                 break;
             }
             case "pelicula":{
-                CreateGUI cgui = new CreateGUI("Nombre: ", "Director", "Edad PG: ");
+                CreateGUI cgui = new CreateGUI(screen,"Nombre: ", "Director", "Edad PG: ");
                 cgui.setVisible(true);
                 break;
             }
@@ -298,6 +315,7 @@ public class Interfaz extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
         // Llamar a borrar por ID con ID = thisItemID
+        cargarTabla();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
@@ -342,7 +360,11 @@ public class Interfaz extends javax.swing.JFrame {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
         tableModel = new DefaultTableModel();
-        //tableModel.addColumn("ID");
+        // Asignar el modelo de tabla a la JTable
+        //jTable1.setModel(tableModel);
+        tableModel.addColumn("ID");
+        /*TableColumn columnaID = jTable1.getColumnModel().getColumn(0);
+        columnaID.setPreferredWidth(10);*/  // Ancho preferido para la columna ID
         switch(screen){
             case "cine":{
                 tableModel.addColumn("Nombre");
@@ -351,10 +373,16 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
+                
                 tableModel.addColumn("NºSala");
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
+                
+                //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
+                
                 verSalas();
+                
+                //lblCineSel.setText(cineSel);                
                 break;
             }
             case "sesion":{
@@ -375,6 +403,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
         jTable1.setModel(tableModel);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
         
     }
     private void verCines(){
@@ -431,5 +462,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCineSel;
     // End of variables declaration//GEN-END:variables
 }
