@@ -4,6 +4,7 @@
  */
 package cdbm_ant;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -21,8 +22,7 @@ public class Landing extends javax.swing.JFrame {
      */
     public Landing() {
         initComponents();
-        File file = new File(".");
-        System.out.println(file.getAbsolutePath());
+        this.getContentPane().setBackground(new Color(83,60,65));
     }
 
     /**
@@ -129,7 +129,11 @@ public class Landing extends javax.swing.JFrame {
     class ImagenLanding extends JPanel{
         //ATRIBUTO
         private Image imagen;
-        String directorio = "1.png";
+        String directorio;
+
+        ImagenLanding() {
+            this.directorio = "1.png";
+        }
         
         public void paint (Graphics g){
             imagen = new ImageIcon(getClass().getResource(directorio)).getImage();
@@ -139,5 +143,7 @@ public class Landing extends javax.swing.JFrame {
         }
 
     }
+    
+    
 
 }

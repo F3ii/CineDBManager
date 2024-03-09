@@ -34,5 +34,4 @@ cinesdbmanager\Repositorio\ISesionRepositorio.class
 cinesdbmanager\Modelo\Sala.class
 cdbm_ant\CreateGUI$2.class
 cinesdbmanager\Modelo\Cine.class
-cdbm_ant\Interfaz$9.class
 cinesdbmanager\Servicio\SesionServicio.class
