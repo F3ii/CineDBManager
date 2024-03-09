@@ -11,6 +11,7 @@ import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
 import java.awt.Color;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.table.TableColumn;
@@ -313,8 +314,26 @@ public class Interfaz extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
-        // Llamar a borrar por ID con ID = thisItemID
+        String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
+
+        //BORRAR
+        System.out.println(thisItemID);
+        switch (screen) {
+            case "cine":
+                eliminarCineDialog(thisItemID);
+                break;
+            case "sala":
+                //eliminarSalaDialog(thisItemID);
+                break;
+            case "sesion":
+
+                break;
+            case "pelicula":
+
+                break;
+            default:
+                System.out.println("Error");
+        }
         cargarTabla();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -373,15 +392,11 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
-                
                 tableModel.addColumn("NºSala");
                 tableModel.addColumn("VIP");
                 tableModel.addColumn("Butacas");
-                
                 //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
-                
                 verSalas();
-                
                 //lblCineSel.setText(cineSel);                
                 break;
             }
@@ -408,11 +423,32 @@ public class Interfaz extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
         
     }
+
+    private void eliminarCineDialog(String id){
+        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas el cine desaparecera toda la informacion", "Confirmación", JOptionPane.YES_NO_OPTION);
+        // Verifica la opción seleccionada por el usuario
+        if (opcion == JOptionPane.YES_OPTION) {
+            AppConfig.getCineServicio().eliminarCinePorID(Integer.parseInt(id));
+            System.out.println("Cine eliminado con exito.");
+        } else {
+            System.out.println("Eliminar cancelado");
+        }
+    }
+    private void eliminarSalaDialog(String id){
+        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas la sala desapareceran tambien sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
+        // Verifica la opción seleccionada por el usuario
+        if (opcion == JOptionPane.YES_OPTION) {
+            AppConfig.getSalaServicio().eliminarSalaPorID(Integer.parseInt(id));
+            System.out.println("Cine eliminado con exito.");
+        } else {
+            System.out.println("Eliminar cancelado");
+        }
+    }
     private void verCines(){
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
         cines.forEach(c -> {
             tableModel.addRow(new Object[]{
-                    //c.getIdCine(),
+                    c.getIdCine(),
                     c.getNombre(),
                     c.getDireccion()
             });
@@ -422,6 +458,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
+                    s.getIdSala(),
                     s.getNºsala(),
                     s.getVip(),
                     s.getNºbutacas()
@@ -432,7 +469,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Sesion>sesiones= (ArrayList<Sesion>) AppConfig.getSesionServicio().listarTodo();
         sesiones.forEach(s -> {
             tableModel.addRow(new Object[]{
-                    //s.getIdSesion(),
+                    s.getIdSesion(),
                     s.getPrecio(),
                     s.getFecha(),
                     s.getHora()
@@ -443,7 +480,7 @@ public class Interfaz extends javax.swing.JFrame {
         ArrayList<Pelicula>peliculas= (ArrayList<Pelicula>) AppConfig.getPeliculaServicio().listarTodo();
         peliculas.forEach(p -> {
             tableModel.addRow(new Object[]{
-                    //p.getIdPelicula(),
+                    p.getIdPelicula(),
                     p.getNombre(),
                     p.getDirector(),
                     p.getPgEdad()
