@@ -10,6 +10,7 @@ package cdbm_ant;
  */
 public class CreateGUI extends javax.swing.JFrame {
 
+    String entidad;
     /**
      * Creates new form CreateGUI
      */
@@ -17,19 +18,21 @@ public class CreateGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CreateGUI(String label1, String label2) {
+    public CreateGUI(String entidad,String label1, String label2) {
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
+        entidad = this.entidad;
     }
     
-    public CreateGUI(String label1, String label2, String label3) {
+    public CreateGUI(String entidad,String label1, String label2, String label3) {
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        entidad = this.entidad;
     }
     
     
@@ -142,6 +145,7 @@ public class CreateGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Desaparecer la pantalla
         this.dispose();
+        
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
