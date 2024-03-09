@@ -45,6 +45,12 @@ public class SalaServicio {
 
     //Listar todas las salas de la bd
     public List<Sala> listarTodo(){return salaRepositorio.findAll();}
+    
+    //Listar todas las salas que pertenecen a un cine
+    //Listar todas las salas que pertenecen a un cine por idCine
+    public List<Sala> listarSalasPorIdCine(Integer idCine) {
+        return salaRepositorio.salaCine(idCine);
+    }
 
     //Listar todas las salas que hay en un cine
     public List<Sala> salaCine(Integer idCine){

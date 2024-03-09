@@ -489,7 +489,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
     }
     private void verSalas(){
-        ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarTodo();
+        ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarSalasPorIdCine(Integer.valueOf(cineIdSel));
         salas.forEach(s -> {
             tableModel.addRow(new Object[]{
                     s.getIdSala(),

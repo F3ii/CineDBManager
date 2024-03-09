@@ -9,6 +9,7 @@ import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
+import java.awt.Color;
 
 /**
  *
@@ -37,8 +38,8 @@ public class CreateGUI extends javax.swing.JFrame {
         tfData3.setVisible(false);
         cbVIP.setVisible(false);
         this.entidad = entidad;
-        lblGenericMsg.setText("Añadir " + entidad);
-        
+        lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
+        this.getContentPane().setBackground(new Color(255,204,95));
     }
     
     //Constructor para Salas
@@ -52,7 +53,8 @@ public class CreateGUI extends javax.swing.JFrame {
         cbVIP.setVisible(true);
         idCineFK = cineFK;
         this.entidad=entidad;
-        lblGenericMsg.setText("Añadir " + entidad);
+        lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
+        this.getContentPane().setBackground(new Color(255,204,95));
     }
     
     //Constructor para Sesiones
@@ -66,7 +68,8 @@ public class CreateGUI extends javax.swing.JFrame {
         idCineFK = cineFK;
         idSalaFK = salaFK;
         this.entidad=entidad;
-        lblGenericMsg.setText("Añadir " + entidad);
+        lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
+        this.getContentPane().setBackground(new Color(255,204,95));
     }
     
     //Constructor para peliculas
@@ -78,7 +81,8 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData3.setText(label3);
         cbVIP.setVisible(false);
         this.entidad=entidad;
-        lblGenericMsg.setText("Añadir " + entidad);
+        lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
+        this.getContentPane().setBackground(new Color(255,204,95));
     }
     
     
@@ -106,30 +110,45 @@ public class CreateGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblData1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblData1.setForeground(new java.awt.Color(83, 60, 65));
         lblData1.setText("Nombre");
 
+        lblData2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblData2.setForeground(new java.awt.Color(83, 60, 65));
         lblData2.setText("lblData2");
 
+        lblData3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblData3.setForeground(new java.awt.Color(83, 60, 65));
         lblData3.setText("lblData3");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(83, 60, 65));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CINE DB MANAGER");
 
-        btnCancel.setText("Cancelar");
+        btnCancel.setBackground(new java.awt.Color(83, 60, 65));
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(253, 184, 75));
+        btnCancel.setText("CANCELAR");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
 
-        btnAccept.setText("Añadir");
+        btnAccept.setBackground(new java.awt.Color(83, 60, 65));
+        btnAccept.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnAccept.setForeground(new java.awt.Color(253, 184, 75));
+        btnAccept.setText("AÑADIR");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptActionPerformed(evt);
             }
         });
 
+        lblGenericMsg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblGenericMsg.setForeground(new java.awt.Color(83, 60, 65));
         lblGenericMsg.setText("Añadir elemento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,16 +156,16 @@ public class CreateGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblGenericMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
