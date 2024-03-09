@@ -33,21 +33,22 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnRead" min="-2" pref="190" max="-2" attributes="0"/>
-                  <Component id="btnCreate" min="-2" pref="190" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnDelete" min="-2" pref="190" max="-2" attributes="0"/>
-                  <Component id="btnUpdate" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btnCreate" min="-2" pref="190" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="btnUpdate" min="-2" pref="190" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnDelete" min="-2" pref="398" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnPeliculas" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                  <Component id="btnSalas" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                  <Component id="btnSesiones" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                  <Component id="btnCines" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                  <Component id="btnSalas" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="btnCines" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="btnPeliculas" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                      <Component id="btnSesiones" min="-2" pref="119" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -79,7 +80,6 @@
                       <Component id="btnPeliculas" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnDelete" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnRead" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -111,7 +111,10 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="36" style="0"/>
+          <Font name="Segoe UI" size="36" style="3"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="CINE DB MANAGER"/>
@@ -119,6 +122,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSalas">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="SALAS"/>
       </Properties>
       <Events>
@@ -127,6 +139,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCines">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CINES"/>
       </Properties>
       <Events>
@@ -135,6 +156,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPeliculas">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="PELICULAS"/>
       </Properties>
       <Events>
@@ -143,6 +173,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSesiones">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="SESIONES"/>
       </Properties>
       <Events>
@@ -151,6 +190,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="EDITAR"/>
       </Properties>
       <Events>
@@ -159,6 +207,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCreate">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="A&#xd1;ADIR"/>
       </Properties>
       <Events>
@@ -167,18 +224,19 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4b" green="b8" red="fd" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BORRAR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRead">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CONSULTAR"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReadActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

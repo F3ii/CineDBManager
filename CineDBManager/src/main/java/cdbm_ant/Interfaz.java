@@ -9,6 +9,7 @@ import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
+import java.awt.Color;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        this.getContentPane().setBackground(new Color(255,204,95));
         cargarTabla();
     }
 
@@ -48,7 +50,6 @@ public class Interfaz extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnRead = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,10 +66,14 @@ public class Interfaz extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(83, 60, 65));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CINE DB MANAGER");
 
+        btnSalas.setBackground(new java.awt.Color(83, 60, 65));
+        btnSalas.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnSalas.setForeground(new java.awt.Color(253, 184, 75));
         btnSalas.setText("SALAS");
         btnSalas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +81,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnCines.setBackground(new java.awt.Color(83, 60, 65));
+        btnCines.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnCines.setForeground(new java.awt.Color(253, 184, 75));
         btnCines.setText("CINES");
         btnCines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +91,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnPeliculas.setBackground(new java.awt.Color(83, 60, 65));
+        btnPeliculas.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnPeliculas.setForeground(new java.awt.Color(253, 184, 75));
         btnPeliculas.setText("PELICULAS");
         btnPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +101,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnSesiones.setBackground(new java.awt.Color(83, 60, 65));
+        btnSesiones.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnSesiones.setForeground(new java.awt.Color(253, 184, 75));
         btnSesiones.setText("SESIONES");
         btnSesiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +111,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(83, 60, 65));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(253, 184, 75));
         btnUpdate.setText("EDITAR");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +121,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnCreate.setBackground(new java.awt.Color(83, 60, 65));
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(253, 184, 75));
         btnCreate.setText("AÑADIR");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,17 +131,13 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(83, 60, 65));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(253, 184, 75));
         btnDelete.setText("BORRAR");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnRead.setText("CONSULTAR");
-        btnRead.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReadActionPerformed(evt);
             }
         });
 
@@ -137,19 +153,19 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCines, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCines, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -174,8 +190,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -185,18 +200,23 @@ public class Interfaz extends javax.swing.JFrame {
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
         // TODO add your handling code here:
         screen = "sala";
+        btnSesiones.setEnabled(true);
         cargarTabla();
     }//GEN-LAST:event_btnSalasActionPerformed
 
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
         // TODO add your handling code here:
         screen = "cine";
+        btnSesiones.setEnabled(false);
+        btnSalas.setEnabled(true);
         cargarTabla();
     }//GEN-LAST:event_btnCinesActionPerformed
 
     private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
         // TODO add your handling code here:
         screen = "pelicula";
+        btnSesiones.setEnabled(false);
+        btnSalas.setEnabled(false);
         cargarTabla();
     }//GEN-LAST:event_btnPeliculasActionPerformed
 
@@ -279,10 +299,6 @@ public class Interfaz extends javax.swing.JFrame {
         String thisItemID = (String) tableModel.getValueAt(jTable1.getSelectedRow(),0);
         // Llamar a borrar por ID con ID = thisItemID
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,12 +419,12 @@ public class Interfaz extends javax.swing.JFrame {
             });
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCines;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnPeliculas;
-    private javax.swing.JButton btnRead;
     private javax.swing.JButton btnSalas;
     private javax.swing.JButton btnSesiones;
     private javax.swing.JButton btnUpdate;
