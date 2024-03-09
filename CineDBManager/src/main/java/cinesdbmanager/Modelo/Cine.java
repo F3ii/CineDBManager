@@ -18,7 +18,7 @@ public class Cine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cine")
     private int idCine;
-    @OneToMany(mappedBy = "cineByIdCine")
+    @OneToMany(mappedBy = "cineByIdCine",cascade = CascadeType.ALL)
     private List<Sala> salasByIdCine;
 
     public Cine() {
