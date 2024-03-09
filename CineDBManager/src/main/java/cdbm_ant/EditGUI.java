@@ -10,6 +10,7 @@ package cdbm_ant;
  */
 public class EditGUI extends javax.swing.JFrame {
 
+    String entidad;
     /**
      * Creates new form CreateGUI
      */
@@ -17,7 +18,7 @@ public class EditGUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EditGUI(String label1, String label2,
+    public EditGUI(String entidad, String label1, String label2,
             String tf0, String tf1, String tf2) {
         initComponents();
         lblData1.setText(label1);
@@ -29,9 +30,11 @@ public class EditGUI extends javax.swing.JFrame {
         
         lblData3.setVisible(false);
         tfData3.setVisible(false);
+        
+        entidad = this.entidad;
     }
     
-    public EditGUI(String label1, String label2, String label3,
+    public EditGUI(String entidad, String label1, String label2, String label3,
             String tf0, String tf1, String tf2, String tf3) {
         initComponents();
         lblData1.setText(label1);
@@ -42,6 +45,8 @@ public class EditGUI extends javax.swing.JFrame {
         tfData1.setText(tf1);
         tfData2.setText(tf2);
         tfData3.setText(tf3);
+        
+        entidad = this.entidad;
     }
     
     
