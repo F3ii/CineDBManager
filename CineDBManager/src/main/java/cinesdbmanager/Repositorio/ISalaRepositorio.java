@@ -17,4 +17,9 @@ public interface ISalaRepositorio extends JpaRepository<Sala,Integer> {
     );
     @Query("SELECT MAX(s.idSala) FROM Sala s")
     Integer maximaSala();
+    @Query("SELECT s FROM Sala s where s.idCine=:idCine and s.idSala=:idSala")
+    Sala buscarIdSalaIdCine(
+            @Param("idCine") Integer idCine,
+            @Param("idSala") Integer idSala
+    );
 }

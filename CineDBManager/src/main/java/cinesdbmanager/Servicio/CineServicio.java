@@ -26,7 +26,6 @@ public class CineServicio {
         }
         return true;
     }
-
     //Recuperar un cine por su id
     public Cine buscarCine(Integer id){
         return cineRepositorio.getReferenceById(id);

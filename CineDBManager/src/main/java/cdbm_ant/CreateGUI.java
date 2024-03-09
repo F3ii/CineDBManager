@@ -4,6 +4,12 @@
  */
 package cdbm_ant;
 
+import cinesdbmanager.Context.AppConfig;
+import cinesdbmanager.Modelo.Cine;
+import cinesdbmanager.Modelo.Pelicula;
+import cinesdbmanager.Modelo.Sala;
+import cinesdbmanager.Modelo.Sesion;
+
 /**
  *
  * @author danie
@@ -24,7 +30,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
-        entidad = this.entidad;
+        this.entidad=entidad;
     }
     
     public CreateGUI(String entidad,String label1, String label2, String label3) {
@@ -32,7 +38,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
-        entidad = this.entidad;
+        this.entidad=entidad;
     }
     
     
@@ -145,12 +151,44 @@ public class CreateGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Desaparecer la pantalla
         this.dispose();
-        
+        System.out.println("Cancelado");
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         // Llamar a crear con los datos
+        switch (entidad) {
+            case "cine":
+                                    //Nombre            Direccion
+                Cine cine=new Cine(tfData2.getText(),tfData1.getText());
+                AppConfig.getCineServicio().insertarCine(cine);
+                System.out.println("Nuevo cine insertado");
+                this.dispose();
+                break;
+            case "sala":
+
+                Sala sala=new Sala();
+                AppConfig.getSalaServicio().insertarSala(sala);
+                System.out.println("Nueva sala insertada");
+                this.dispose();
+                break;
+            case "sesion":
+
+                Sesion sesion=new Sesion();
+                AppConfig.getSesionServicio().insertSesion(sesion);
+                System.out.println("Nueva sesion insertada");
+                this.dispose();
+                break;
+            case "pelicula":
+
+                Pelicula pelicula=new Pelicula();
+                AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+                System.out.println("Nueva pelicula insertada");
+                this.dispose();
+                break;
+            default:
+                System.out.println("Error");
+        }
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     /**
