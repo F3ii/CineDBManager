@@ -36,6 +36,8 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        btnSesiones.setEnabled(false);
+        btnSalas.setEnabled(false);
         btnCines.doClick();
         this.getContentPane().setBackground(new Color(255,204,95));
         //cargarTabla();
