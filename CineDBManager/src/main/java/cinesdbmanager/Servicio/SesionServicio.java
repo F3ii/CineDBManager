@@ -27,9 +27,9 @@ public class SesionServicio {
         return true;
     }
     
-    public Sesion buscarSesionporIds(Integer idCine, Integer idSala, Integer idSesion){
+    /*public Sesion buscarSesionporIds(Integer idCine, Integer idSala, Integer idSesion){
         return sesionRepositorio.buscarIdSesionIdSalaIdCine(idCine, idSala, idSesion);
-    }
+    }*/
 
     //Listar las sesiones de una sala
     public List<Sesion> listarSesionesPorIdSala(Integer idSala) {

@@ -35,6 +35,7 @@ public class EditGUI extends javax.swing.JFrame {
     // Constructor para Cine
     public EditGUI(Interfaz gui, String entidad, String label1, String label2,
             String tf0, String tf1, String tf2) {
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -57,6 +58,7 @@ public class EditGUI extends javax.swing.JFrame {
     //Constructor para Sala
     public EditGUI(Interfaz gui, String entidad, String label1, String label2, String label3,
             String tf0, String tf1, Boolean tf2, String tf3, String cineFK) {
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -80,6 +82,7 @@ public class EditGUI extends javax.swing.JFrame {
     //Constructor para Sesion
     public EditGUI(Interfaz gui, String entidad, String label1, String label2, String label3,
             String tf0, String tf1, Date tf2, Time tf3, String cineFK, String salaFK) {
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -111,6 +114,7 @@ public class EditGUI extends javax.swing.JFrame {
     //Constructor para Pelicula
     public EditGUI(Interfaz gui, String entidad, String label1, String label2, String label3,
             String tf0, String tf1, String tf2, String tf3) {
+        this.gui = gui;
         initComponents();
         lblData1.setText(label1);
         lblData2.setText(label2);
@@ -230,11 +234,11 @@ public class EditGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_Hora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(lbl_Minuto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         timePanelLayout.setVerticalGroup(
@@ -397,12 +401,13 @@ public class EditGUI extends javax.swing.JFrame {
     }
     
     private void actualizarSesion(FechaSesion fecha){
-        Sesion sesion = AppConfig.getSesionServicio().buscarSesionporIds(Integer.parseInt(idCineFK),
+        System.out.println("Actualizar sesion lanzado");
+        /*Sesion sesion = AppConfig.getSesionServicio().buscarSesionporIds(Integer.parseInt(idCineFK),
                 Integer.parseInt(idSalaFK), Integer.parseInt(lblDataID.getText()));
         sesion.setPrecio(Double.parseDouble(lblData1.getText()));
         sesion.setFecha(fecha.getDate());
         sesion.setHora(fecha.getTime());
-        AppConfig.getSesionServicio().actualizarSesion(sesion);
+        AppConfig.getSesionServicio().actualizarSesion(sesion);*/
     }
     
     /**

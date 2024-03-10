@@ -286,9 +286,9 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
-                String thisItemNumSala = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemNumSala = tableModel.getValueAt(jTable1.getSelectedRow(),1).toString();
                 Boolean thisItemVIP = (Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                String thisItemButacas = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
+                String thisItemButacas = tableModel.getValueAt(jTable1.getSelectedRow(),3).toString();
                 EditGUI egui = new EditGUI(this, screen,"Numero de Sala: ", "VIP: ", "Butacas: ", thisItemID,
                         thisItemNumSala ,thisItemVIP, thisItemButacas, cineIdSel);
                 egui.setVisible(true);
