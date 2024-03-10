@@ -3,6 +3,10 @@ cdbm_ant\Landing$2.class
 cinesdbmanager\Modelo\Sesion.class
 cdbm_ant\EditGUI$3.class
 cdbm_ant\Interfaz$6.class
+<<<<<<< HEAD
+=======
+cinesdbmanager\Modelo\SalaCine_PK.class
+>>>>>>> f3457762f16aa6be7f31b25b882a88aeb9b9dcb3
 cdbm_ant\Interfaz$1.class
 cdbm_ant\CreateGUI$3.class
 cdbm_ant\Interfaz.class
@@ -20,6 +24,10 @@ cdbm_ant\Interfaz$5.class
 cdbm_ant\Landing$ImagenLanding.class
 cdbm_ant\Interfaz$7.class
 cinesdbmanager\Repositorio\IPeliculaRepositorio.class
+<<<<<<< HEAD
+=======
+calendar\FechaSesion.class
+>>>>>>> f3457762f16aa6be7f31b25b882a88aeb9b9dcb3
 cdbm_ant\Landing$1.class
 cinesdbmanager\Repositorio\ICineRepositorio.class
 cdbm_ant\Interfaz$2.class
@@ -33,5 +41,8 @@ cinesdbmanager\Repositorio\ISesionRepositorio.class
 cinesdbmanager\Modelo\Sala.class
 cdbm_ant\CreateGUI$2.class
 cinesdbmanager\Modelo\Cine.class
+<<<<<<< HEAD
 cdbm_ant\Interfaz$9.class
+=======
+>>>>>>> f3457762f16aa6be7f31b25b882a88aeb9b9dcb3
 cinesdbmanager\Servicio\SesionServicio.class

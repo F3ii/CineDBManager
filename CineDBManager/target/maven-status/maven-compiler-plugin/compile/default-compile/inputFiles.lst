@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Sesion.java
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\IPeliculaRepositorio.java
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Pelicula.java
@@ -17,3 +18,26 @@ D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Servicio\CineSer
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Sala.java
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ISalaRepositorio.java
 D:\DAM\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ICineRepositorio.java
+=======
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cdbm_ant\CreateGUI.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Servicio\CineServicio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cdbm_ant\EditGUI.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\IPeliculaRepositorio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\CinesDbManagerApplication.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Servicio\PeliculaServicio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Servicio\SesionServicio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Servicio\SalaServicio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ICineRepositorio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Context\SpringContext.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Sala.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ISalaRepositorio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\calendar\FechaSesion.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cdbm_ant\Interfaz.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ISesionRepositorio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Cine.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cdbm_ant\Landing.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Pelicula.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Context\AppConfig.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\SalaCine_PK.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Sesion.java
+>>>>>>> f3457762f16aa6be7f31b25b882a88aeb9b9dcb3

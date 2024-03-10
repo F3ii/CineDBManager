@@ -15,7 +15,8 @@ public class Pelicula {
     @Column(name = "director", nullable = true, length = 25)
     private String director;
     @Id
-    @Column(name = "id_pelicula", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pelicula")
     private int idPelicula;
     @Basic
     @Column(name = "pg_edad", nullable = true)
@@ -24,6 +25,13 @@ public class Pelicula {
     private List<Sesion> sesionsByIdPelicula;
 
     public Pelicula() {
+    }
+
+    public Pelicula(String nombre, String director, Integer pgEdad) {
+        this.nombre = nombre;
+        this.director = director;
+        this.pgEdad = pgEdad;
+        this.sesionsByIdPelicula=new ArrayList<Sesion>();
     }
 
     public Pelicula(String nombre, String director, int idPelicula, Integer pgEdad) {

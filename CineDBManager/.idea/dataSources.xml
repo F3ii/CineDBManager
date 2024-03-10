@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://ella.db.elephantsql.com:5432/ymnjytcp</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="usuario2@localhost" uuid="56698fab-8cba-41c3-a3ca-ff500e5532e9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/usuario2</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

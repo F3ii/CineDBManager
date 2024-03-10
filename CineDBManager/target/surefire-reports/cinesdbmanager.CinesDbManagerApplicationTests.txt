@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: cinesdbmanager.CinesDbManagerApplicationTests
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.829 s -- in cinesdbmanager.CinesDbManagerApplicationTests
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.976 s -- in cinesdbmanager.CinesDbManagerApplicationTests
+>>>>>>> f3457762f16aa6be7f31b25b882a88aeb9b9dcb3
