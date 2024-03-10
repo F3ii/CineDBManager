@@ -10,6 +10,7 @@ D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cin
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Context\SpringContext.java
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Sala.java
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ISalaRepositorio.java
+D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\calendar\FechaSesion.java
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cdbm_ant\Interfaz.java
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Repositorio\ISesionRepositorio.java
 D:\DAM\Interfaces\NetBeansProjects\CineDBProject\CineDBManager\src\main\java\cinesdbmanager\Modelo\Cine.java
