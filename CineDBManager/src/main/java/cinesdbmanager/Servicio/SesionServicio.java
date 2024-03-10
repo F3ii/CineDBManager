@@ -26,11 +26,9 @@ public class SesionServicio {
         }
         return true;
     }
-    
-    /*public Sesion buscarSesionporIds(Integer idCine, Integer idSala, Integer idSesion){
-        return sesionRepositorio.buscarIdSesionIdSalaIdCine(idCine, idSala, idSesion);
-    }*/
-
+    public Sesion buscarSesionPorId(Integer id){
+        return sesionRepositorio.getReferenceById(id);
+    }
     //Listar las sesiones de una sala
     public List<Sesion> listarSesionesPorIdSala(Integer idSala) {
         return sesionRepositorio.sesionSala(idSala);

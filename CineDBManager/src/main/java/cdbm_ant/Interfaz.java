@@ -306,7 +306,7 @@ public class Interfaz extends javax.swing.JFrame {
             case "pelicula":{
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                String thisItemEdadPG = (String) tableModel.getValueAt(jTable1.getSelectedRow(),3);
+                String thisItemEdadPG = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
                 EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Director", "Edad PG: ", 
                         thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
                 egui.setVisible(true);

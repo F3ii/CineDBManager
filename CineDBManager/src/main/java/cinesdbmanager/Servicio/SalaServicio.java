@@ -21,7 +21,7 @@ public class SalaServicio {
 
     //Actualizar pelicula
     public boolean actualizarSala(Sala sala){
-        if(salaRepositorio.getReferenceById(sala.getIdSala())!=null){
+        if(salaRepositorio.buscarIdSalaIdCine(sala.getCineByIdCine().getIdCine(),sala.getIdSala())!=null){
             salaRepositorio.save(sala);
         }
         return true;

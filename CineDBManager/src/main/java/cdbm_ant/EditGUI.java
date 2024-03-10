@@ -7,7 +7,9 @@ package cdbm_ant;
 import calendar.FechaSesion;
 import cinesdbmanager.Context.AppConfig;
 import cinesdbmanager.Modelo.Cine;
+import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
+import cinesdbmanager.Modelo.Sesion;
 
 
 import javax.swing.*;
@@ -367,14 +369,13 @@ public class EditGUI extends javax.swing.JFrame {
                 fecha = getValue(); //fecha.getDate() y fecha.getTime() para obtener la fecha
                 actualizarSesion(fecha);
                 // Insertar codigo para sesion
-                
                 System.out.println("Se ha actualizado la sesion");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "pelicula":
-                // Insertar codigo para cine
+                actualizarPelicula();
                 System.out.println("Se ha actualizado la pelicula");
                 this.dispose();
                 gui.cargarTabla();
@@ -402,15 +403,19 @@ public class EditGUI extends javax.swing.JFrame {
     }
     
     private void actualizarSesion(FechaSesion fecha){
-        System.out.println("Actualizar sesion lanzado");
-        /*Sesion sesion = AppConfig.getSesionServicio().buscarSesionporIds(Integer.parseInt(idCineFK),
-                Integer.parseInt(idSalaFK), Integer.parseInt(lblDataID.getText()));
-        sesion.setPrecio(Double.parseDouble(lblData1.getText()));
+        Sesion sesion=AppConfig.getSesionServicio().buscarSesionPorId(Integer.parseInt(lblDataID.getText()));
+        sesion.setPrecio(Double.parseDouble(tfData1.getText()));
         sesion.setFecha(fecha.getDate());
         sesion.setHora(fecha.getTime());
-        AppConfig.getSesionServicio().actualizarSesion(sesion);*/
+        AppConfig.getSesionServicio().actualizarSesion(sesion);
     }
-    
+    private void actualizarPelicula(){
+        Pelicula pelicula=AppConfig.getPeliculaServicio().buscarPelicula(Integer.parseInt(lblDataID.getText()));
+        pelicula.setNombre(tfData1.getText());
+        pelicula.setPgEdad(Integer.parseInt(tfData3.getText()));
+        pelicula.setDirector(tfData2.getText());
+        AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
+    }
     /**
      * @param args the command line arguments
      */
