@@ -15,4 +15,10 @@ public interface ISesionRepositorio extends JpaRepository<Sesion,Integer> {
     List<Sesion> sesionSala(
             @Param("idSala") Integer idSala
     );
+    @Query("SELECT s FROM Sesion s where s.idCine=:idCine and s.idSala=:idSala and s.idSesion=:idSesion")
+    Sesion buscarIdSesionIdSalaIdCine(
+            @Param("idCine") Integer idCine,
+            @Param("idSala") Integer idSala,
+            @Param("idSesion") Integer idSesion
+    );
 }

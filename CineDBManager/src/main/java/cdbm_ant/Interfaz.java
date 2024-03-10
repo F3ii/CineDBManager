@@ -10,6 +10,8 @@ import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
 import java.awt.Color;
+import java.sql.Date;
+import java.sql.Time;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -278,30 +280,26 @@ public class Interfaz extends javax.swing.JFrame {
             case "cine":{
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI(screen,"Nombre: ", "Direccion: ", thisItemID,
+                EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Direccion: ", thisItemID,
                         thisItemNombre, thisItemDireccion);
                 egui.setVisible(true);
                 break;
             }
             case "sala":{
-                String thisItemVIP = Boolean.toString((Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2));
+                String thisItemNumSala = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                Boolean thisItemVIP = (Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2);
                 String thisItemButacas = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
-                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID,
-                        thisItemVIP, thisItemButacas);
+                EditGUI egui = new EditGUI(this, screen,"Numero de Sala: ", "VIP: ", "Butacas: ", thisItemID,
+                        thisItemNumSala ,thisItemVIP, thisItemButacas, cineIdSel);
                 egui.setVisible(true);
                 break;
-//                String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
-//                String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-//                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID,
-//                        thisItemVIP, thisItemButacas);
-//                egui.setVisible(true);
-//                break;
             }
             case "sesion":{
                 String thisItemPrecio = Double.toString((Double) tableModel.getValueAt(jTable1.getSelectedRow(),1));
-                String thisItemDateTime = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI(screen,"Precio de Entrada: ", "Fecha y Hora: ",
-                        thisItemID, thisItemPrecio, thisItemDateTime);
+                Date thisItemDate = (Date) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                Time thisItemTime = (Time) tableModel.getValueAt(jTable1.getSelectedRow(),3);
+                EditGUI egui = new EditGUI(this, screen,"Precio de Entrada: ", "Fecha: " ,"Hora: ",
+                        thisItemID, thisItemPrecio, thisItemDate, thisItemTime, cineIdSel, salaIdSel);
                 egui.setVisible(true);
                 break;
             }
@@ -309,7 +307,7 @@ public class Interfaz extends javax.swing.JFrame {
                 String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
                 String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
                 String thisItemEdadPG = (String) tableModel.getValueAt(jTable1.getSelectedRow(),3);
-                EditGUI egui = new EditGUI(screen,"Nombre: ", "Director", "Edad PG: ", 
+                EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Director", "Edad PG: ", 
                         thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
                 egui.setVisible(true);
                 break;
