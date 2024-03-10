@@ -44,14 +44,14 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="timePanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tfData3" pref="175" max="32767" attributes="0"/>
+                              <Component id="tfData3" pref="207" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="datePick" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cbVIP" pref="164" max="32767" attributes="0"/>
+                              <Component id="cbVIP" pref="166" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="tfData2" pref="208" max="32767" attributes="0"/>
+                              <Component id="tfData2" pref="210" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -216,11 +216,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbl_Hora" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="horaSpinner" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="horaSpinner" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="lbl_Minuto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="minutoSpinner" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="minutoSpinner" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
