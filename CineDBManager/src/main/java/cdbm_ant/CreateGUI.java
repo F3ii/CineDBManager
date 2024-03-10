@@ -320,20 +320,20 @@ public class CreateGUI extends javax.swing.JFrame {
                 System.out.println(tfData1.getText());
                 System.out.println(tfData3.getText());
 
-                FechaSesion fecha = new FechaSesion();
+                /*FechaSesion fecha = new FechaSesion();
                 fecha = getValue();                
-                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
+                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));*/
 
-                AppConfig.getSesionServicio().insertSesion(sesion);
+                //AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "pelicula":
-                Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
+                /*Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
                 AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
-                System.out.println("Nueva pelicula insertada");
+                System.out.println("Nueva pelicula insertada");*/
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
