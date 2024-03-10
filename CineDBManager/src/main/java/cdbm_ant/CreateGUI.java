@@ -316,17 +316,14 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sesion":
-<<<<<<< HEAD
                 System.out.println(tfData2.getText());
                 System.out.println(tfData1.getText());
                 System.out.println(tfData3.getText());
-                Sesion sesion=new Sesion(Date.valueOf(tfData2.getText()), Time.valueOf(tfData3.getText()),Double.parseDouble(tfData1.getText()));
-                sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
-=======
+
                 FechaSesion fecha = new FechaSesion();
                 fecha = getValue();                
                 Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
->>>>>>> master
+
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
