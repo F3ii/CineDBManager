@@ -1,6 +1,5 @@
 package cinesdbmanager.Servicio;
 
-import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Repositorio.ISalaRepositorio;
 import jakarta.validation.ConstraintViolationException;
@@ -59,19 +58,8 @@ public class SalaServicio {
 
     //Eliminar una sala por id sala e id cine
     public boolean eliminarSalaPorIdCineSala(Integer idCine,Integer idSala) {
-        Sala borrado = salaRepositorio.buscarIdSalaIdCine(idCine,idSala);
         try {
-            salaRepositorio.delete(borrado);
-        }catch (ConstraintViolationException e ){
-            return false;
-        }
-        return true;
-    }
-
-    //Eliminar una sala por su id
-    public boolean eliminarSalaPorID(Integer id) {
-        Sala borrado = salaRepositorio.getReferenceById(id);
-        try {
+            Sala borrado = salaRepositorio.buscarIdSalaIdCine(idCine,idSala);
             salaRepositorio.delete(borrado);
         }catch (ConstraintViolationException e ){
             return false;

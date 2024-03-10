@@ -1,6 +1,5 @@
 package cinesdbmanager.Servicio;
 
-import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Repositorio.IPeliculaRepositorio;
 import jakarta.validation.ConstraintViolationException;
