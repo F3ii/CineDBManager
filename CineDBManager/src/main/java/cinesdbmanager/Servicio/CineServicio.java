@@ -22,7 +22,6 @@ public class CineServicio {
     }
 
     //Actualizar cine
-    @Transactional
     public boolean actualizarCine(Cine cine){
         if(cineRepositorio.getReferenceById(cine.getIdCine())!=null){
             cineRepositorio.save(cine);
