@@ -27,6 +27,11 @@ public class SesionServicio {
         return true;
     }
 
+    //Listar las sesiones de una sala
+    public List<Sesion> listarSesionesPorIdSala(Integer idSala) {
+        return sesionRepositorio.sesionSala(idSala);
+    }
+
     //Recuperar el id maximo que hay guardado en la bd
     public Integer idSesionMaxima(){
         return sesionRepositorio.maximoSesion();
@@ -37,8 +42,8 @@ public class SesionServicio {
 
     //Eliminar sesion por su id
     public boolean eliminarSesionPorID(Integer id) {
-        Sesion borrado = sesionRepositorio.getReferenceById(id);
         try {
+            Sesion borrado = sesionRepositorio.getReferenceById(id);
             sesionRepositorio.delete(borrado);
         }catch (ConstraintViolationException e ){
             return false;

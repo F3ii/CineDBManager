@@ -10,6 +10,8 @@ import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
 import java.awt.Color;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -242,7 +244,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sesion":
-                Sesion sesion=new Sesion();
+                Sesion sesion=new Sesion(Date.valueOf(tfData2.getText()), Time.valueOf(tfData3.getText()),Double.parseDouble(tfData1.getText()));
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();

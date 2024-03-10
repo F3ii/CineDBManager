@@ -216,17 +216,22 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
         // TODO add your handling code here:
-        if(screen == "cine"){    
-            cineIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
-            cineSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        }
+        try {
+            if (screen == "cine") {
+                cineIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(), 0));
+                cineSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
+            }
             salaIdSel = null;
             salaSel = null;
-        btnSesiones.setEnabled(true);
-        screen = "sala";
-        //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
-        cargarTabla();
-        lblCineSel.setText(cineSel);
+            btnSesiones.setEnabled(true);
+            screen = "sala";
+            //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
+            cargarTabla();
+            lblCineSel.setText(cineSel);
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un ítem en la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+        }
     }//GEN-LAST:event_btnSalasActionPerformed
 
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
@@ -240,6 +245,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnSesiones.setEnabled(false);
         btnSalas.setEnabled(true);
         cargarTabla();
+
     }//GEN-LAST:event_btnCinesActionPerformed
 
     private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
@@ -252,11 +258,15 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnSesionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionesActionPerformed
         // TODO add your handling code here:
-        salaIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
-        salaSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();  
-        screen = "sesion";
-        cargarTabla();
-        lblCineSel.setText(cineSel + separator + salaSel);
+        try {
+            salaIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(), 0));
+            salaSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
+            screen = "sesion";
+            cargarTabla();
+            lblCineSel.setText(cineSel + separator + salaSel);
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un ítem en la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSesionesActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -334,20 +344,18 @@ public class Interfaz extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
 
-        //BORRAR
-        System.out.println(thisItemID);
         switch (screen) {
             case "cine":
                 eliminarCineDialog(thisItemID);
                 break;
             case "sala":
-                //eliminarSalaDialog(thisItemID);
+                eliminarSalaDialog(thisItemID);
                 break;
             case "sesion":
-
+                AppConfig.getSesionServicio().eliminarSesionPorID(Integer.parseInt(thisItemID));
                 break;
             case "pelicula":
-
+                AppConfig.getPeliculaServicio().eliminarPeliculaPorID(Integer.parseInt(thisItemID));
                 break;
             default:
                 System.out.println("Error");
@@ -418,13 +426,13 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sesion":{
-                tableModel.addColumn("Precio de Entrada");
-                tableModel.addColumn("Fecha");
-                tableModel.addColumn("Hora");
-                tableModel.addColumn("Pelicula");
-                tableModel.addColumn("idCine");
-                tableModel.addColumn("idSala");
-                verSesion();
+                    tableModel.addColumn("Precio de Entrada");
+                    tableModel.addColumn("Fecha");
+                    tableModel.addColumn("Hora");
+                    tableModel.addColumn("Pelicula");
+                    tableModel.addColumn("idCine");
+                    tableModel.addColumn("idSala");
+                    verSesion();
                 break;
             }
             case "pelicula":{
@@ -457,7 +465,6 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
     }
-
     private void eliminarCineDialog(String id){
         int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas el cine desaparecera toda la informacion", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
@@ -472,8 +479,7 @@ public class Interfaz extends javax.swing.JFrame {
         int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas la sala desapareceran tambien sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
         if (opcion == JOptionPane.YES_OPTION) {
-            AppConfig.getSalaServicio().eliminarSalaPorID(Integer.parseInt(id));
-            System.out.println("Cine eliminado con exito.");
+            AppConfig.getSalaServicio().eliminarSalaPorIdCineSala(Integer.parseInt(cineIdSel),Integer.parseInt(id));
         } else {
             System.out.println("Eliminar cancelado");
         }
@@ -489,26 +495,27 @@ public class Interfaz extends javax.swing.JFrame {
         });
     }
     private void verSalas(){
-        ArrayList<Sala>salas= (ArrayList<Sala>) AppConfig.getSalaServicio().listarSalasPorIdCine(Integer.valueOf(cineIdSel));
-        salas.forEach(s -> {
-            tableModel.addRow(new Object[]{
-                    s.getIdSala(),
-                    s.getNºsala(),
-                    s.getVip(),
-                    s.getNºbutacas()
+            ArrayList<Sala> salas = (ArrayList<Sala>) AppConfig.getSalaServicio().listarSalasPorIdCine(Integer.valueOf(cineIdSel));
+            salas.forEach(s -> {
+                tableModel.addRow(new Object[]{
+                        s.getIdSala(),
+                        s.getNºsala(),
+                        s.getVip(),
+                        s.getNºbutacas()
+                });
             });
-        });
     }
     private void verSesion(){
-        ArrayList<Sesion>sesiones= (ArrayList<Sesion>) AppConfig.getSesionServicio().listarTodo();
-        sesiones.forEach(s -> {
-            tableModel.addRow(new Object[]{
-                    s.getIdSesion(),
-                    s.getPrecio(),
-                    s.getFecha(),
-                    s.getHora()
+            ArrayList<Sesion> sesiones = (ArrayList<Sesion>) AppConfig.getSesionServicio().listarSesionesPorIdSala(Integer.valueOf(salaIdSel));
+            sesiones.forEach(s -> {
+                tableModel.addRow(new Object[]{
+                        s.getIdSesion(),
+                        s.getPrecio(),
+                        s.getFecha(),
+                        s.getHora(),
+                        s.getPeliculaByIdPelicula().getNombre()
+                });
             });
-        });
     }
     private void verPeliculas(){
         ArrayList<Pelicula>peliculas= (ArrayList<Pelicula>) AppConfig.getPeliculaServicio().listarTodo();
