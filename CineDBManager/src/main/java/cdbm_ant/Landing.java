@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -129,14 +130,9 @@ public class Landing extends javax.swing.JFrame {
     class ImagenLanding extends JPanel{
         //ATRIBUTO
         private Image imagen;
-        String directorio;
-
-        ImagenLanding() {
-            this.directorio = "1.png";
-        }
         
         public void paint (Graphics g){
-            imagen = new ImageIcon(getClass().getResource(directorio)).getImage();
+            imagen = new ImageIcon(getClass().getClassLoader().getResource("palomito.png")).getImage();
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
