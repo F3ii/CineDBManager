@@ -299,40 +299,28 @@ public class CreateGUI extends javax.swing.JFrame {
         // Llamar a crear con los datos
         switch (entidad) {
             case "cine":
-                Cine cine=new Cine(tfData2.getText(),tfData1.getText());
-                AppConfig.getCineServicio().insertarCine(cine);
+                añadirCine();
                 System.out.println("Nuevo cine insertado");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "sala":
-                Sala sala=new Sala(Integer.valueOf(tfData3.getText()),
-                        Integer.valueOf(tfData1.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
-                AppConfig.getSalaServicio().insertarSala(sala);
+                añadirSala();
                 System.out.println("Nueva sala insertada");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "sesion":
-                System.out.println(tfData2.getText());
-                System.out.println(tfData1.getText());
-                System.out.println(tfData3.getText());
-
-                FechaSesion fecha = new FechaSesion();
-                fecha = getValue();                
-                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
-
-                AppConfig.getSesionServicio().insertSesion(sesion);
+                añadirSesion();
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "pelicula":
-                Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
-                AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+                añadirPelicula();
                 System.out.println("Nueva pelicula insertada");
                 this.dispose();
                 gui.cargarTabla();
@@ -342,7 +330,29 @@ public class CreateGUI extends javax.swing.JFrame {
                 System.err.println("Error al insertar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
-
+    private void añadirPelicula(){
+        Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
+        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+    }
+    private void añadirSala(){
+        Sala sala=new Sala(Integer.valueOf(tfData3.getText()),
+                Integer.valueOf(tfData1.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
+        AppConfig.getSalaServicio().insertarSala(sala);
+    }
+    private void añadirCine(){
+        Cine cine=new Cine(tfData2.getText(),tfData1.getText());
+        AppConfig.getCineServicio().insertarCine(cine);
+    }
+    private void añadirSesion(){
+        Sala sala1=AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK),Integer.parseInt(idSalaFK));
+        FechaSesion fecha = new FechaSesion();
+        fecha = getValue();
+        System.out.println(fecha.toString());
+        Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
+        sesion.setSalaByIdSala(sala1);
+        sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
+        AppConfig.getSesionServicio().insertSesion(sesion);
+    }
     /**
      * @param args the command line arguments
      */
