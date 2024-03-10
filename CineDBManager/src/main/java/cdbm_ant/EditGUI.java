@@ -252,6 +252,7 @@ public class EditGUI extends javax.swing.JFrame {
         // Llamar a crear con los datos
         switch (entidad) {
             case "cine":
+                actualizarCine();
                 // Insertar codigo para cine
                 System.out.println("Se ha actualizado el cine");
                 this.dispose();
@@ -283,7 +284,19 @@ public class EditGUI extends javax.swing.JFrame {
                 System.err.println("Error al actualizar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
-
+    private void actualizarCine(){
+        Cine cine=AppConfig.getCineServicio().buscarCine(Integer.parseInt(lblDataID.getText()));
+        cine.setNombre(tfData1.getText());
+        cine.setDireccion(tfData2.getText());
+        AppConfig.getCineServicio().actualizarCine(cine);
+    }
+    private void actualizarSala(){
+        Sala sala=AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK),Integer.parseInt(idSalaFK));
+//        sala.setVip();
+//        sala.setNºbutacas();
+//        sala.setNºsala();
+        AppConfig.getSalaServicio().actualizarSala(sala);
+    }
     /**
      * @param args the command line arguments
      */

@@ -299,7 +299,6 @@ public class CreateGUI extends javax.swing.JFrame {
         // Llamar a crear con los datos
         switch (entidad) {
             case "cine":
-                                    //Nombre            Direccion
                 Cine cine=new Cine(tfData2.getText(),tfData1.getText());
                 AppConfig.getCineServicio().insertarCine(cine);
                 System.out.println("Nuevo cine insertado");
@@ -317,9 +316,14 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sesion":
+                System.out.println(tfData2.getText());
+                System.out.println(tfData1.getText());
+                System.out.println(tfData3.getText());
+
                 FechaSesion fecha = new FechaSesion();
                 fecha = getValue();                
                 Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
+
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
@@ -327,7 +331,7 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "pelicula":
-                Pelicula pelicula=new Pelicula();
+                Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
                 AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
                 System.out.println("Nueva pelicula insertada");
                 this.dispose();
