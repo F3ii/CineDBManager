@@ -2,10 +2,12 @@ package cinesdbmanager.Servicio;
 
 import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Repositorio.ICineRepositorio;
+import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +22,7 @@ public class CineServicio {
     }
 
     //Actualizar cine
+    @Transactional
     public boolean actualizarCine(Cine cine){
         if(cineRepositorio.getReferenceById(cine.getIdCine())!=null){
             cineRepositorio.save(cine);
