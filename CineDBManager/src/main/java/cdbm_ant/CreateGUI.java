@@ -4,6 +4,7 @@
  */
 package cdbm_ant;
 
+import calendar.FechaSesion;
 import cinesdbmanager.Context.AppConfig;
 import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
@@ -12,6 +13,7 @@ import cinesdbmanager.Modelo.Sesion;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Calendar;
 
 /**
  *
@@ -39,6 +41,8 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData3.setVisible(false);
         tfData3.setVisible(false);
         cbVIP.setVisible(false);
+        datePick.setVisible(false);
+        timePanel.setVisible(false);
         this.entidad = entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
         this.getContentPane().setBackground(new Color(255,204,95));
@@ -53,6 +57,8 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData3.setText(label3);
         tfData2.setVisible(false);
         cbVIP.setVisible(true);
+        datePick.setVisible(false);
+        timePanel.setVisible(false);
         idCineFK = cineFK;
         this.entidad=entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
@@ -67,6 +73,10 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData2.setText(label2);
         lblData3.setText(label3);
         cbVIP.setVisible(false);
+        datePick.setVisible(true);
+        timePanel.setVisible(true);
+        tfData2.setVisible(false);
+        tfData3.setVisible(false);
         idCineFK = cineFK;
         idSalaFK = salaFK;
         this.entidad=entidad;
@@ -82,12 +92,20 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData2.setText(label2);
         lblData3.setText(label3);
         cbVIP.setVisible(false);
+        datePick.setVisible(false);
+        timePanel.setVisible(false);
         this.entidad=entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
         this.getContentPane().setBackground(new Color(255,204,95));
     }
     
-    
+    public FechaSesion getValue(){
+        Calendar calendar = datePick.getJCalendar().getCalendar();
+        int hora = (Integer) horaSpinner.getValue();
+        int minuto = (Integer) minutoSpinner.getValue();
+        return new FechaSesion(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.YEAR),hora, minuto);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,6 +116,7 @@ public class CreateGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         tfData1 = new javax.swing.JTextField();
         tfData2 = new javax.swing.JTextField();
         tfData3 = new javax.swing.JTextField();
@@ -109,6 +128,12 @@ public class CreateGUI extends javax.swing.JFrame {
         btnAccept = new javax.swing.JButton();
         lblGenericMsg = new javax.swing.JLabel();
         cbVIP = new javax.swing.JCheckBox();
+        datePick = new com.toedter.calendar.JDateChooser();
+        timePanel = new javax.swing.JPanel();
+        lbl_Hora = new javax.swing.JLabel();
+        horaSpinner = new com.toedter.components.JSpinField();
+        lbl_Minuto = new javax.swing.JLabel();
+        minutoSpinner = new com.toedter.components.JSpinField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,16 +178,49 @@ public class CreateGUI extends javax.swing.JFrame {
         lblGenericMsg.setForeground(new java.awt.Color(83, 60, 65));
         lblGenericMsg.setText("Añadir elemento");
 
+        lbl_Hora.setText("HORA");
+
+        horaSpinner.setMaximum(23);
+        horaSpinner.setMinimum(0);
+
+        lbl_Minuto.setText("MINUTO");
+
+        minutoSpinner.setMaximum(59);
+        minutoSpinner.setMinimum(0);
+
+        javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
+        timePanel.setLayout(timePanelLayout);
+        timePanelLayout.setHorizontalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_Hora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(lbl_Minuto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        timePanelLayout.setVerticalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(timePanelLayout.createSequentialGroup()
+                        .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Minuto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lbl_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,36 +232,51 @@ public class CreateGUI extends javax.swing.JFrame {
                             .addComponent(lblData2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblData3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfData1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfData3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbVIP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfData1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfData2)))))
+                                .addComponent(tfData3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(datePick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfData2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblGenericMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblData2)
-                    .addComponent(cbVIP))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblData2)
+                        .addComponent(cbVIP))
+                    .addComponent(datePick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblData3))
-                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblData3))
+                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -243,11 +316,17 @@ public class CreateGUI extends javax.swing.JFrame {
                 gui.setVisible(true);
                 break;
             case "sesion":
+<<<<<<< HEAD
                 System.out.println(tfData2.getText());
                 System.out.println(tfData1.getText());
                 System.out.println(tfData3.getText());
                 Sesion sesion=new Sesion(Date.valueOf(tfData2.getText()), Time.valueOf(tfData3.getText()),Double.parseDouble(tfData1.getText()));
                 sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
+=======
+                FechaSesion fecha = new FechaSesion();
+                fecha = getValue();                
+                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
+>>>>>>> master
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
                 this.dispose();
@@ -307,13 +386,20 @@ public class CreateGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
     private javax.swing.JCheckBox cbVIP;
+    private com.toedter.calendar.JDateChooser datePick;
+    private com.toedter.components.JSpinField horaSpinner;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblData1;
     private javax.swing.JLabel lblData2;
     private javax.swing.JLabel lblData3;
     private javax.swing.JLabel lblGenericMsg;
+    private javax.swing.JLabel lbl_Hora;
+    private javax.swing.JLabel lbl_Minuto;
+    private com.toedter.components.JSpinField minutoSpinner;
     private javax.swing.JTextField tfData1;
     private javax.swing.JTextField tfData2;
     private javax.swing.JTextField tfData3;
+    private javax.swing.JPanel timePanel;
     // End of variables declaration//GEN-END:variables
 }
