@@ -322,7 +322,7 @@ public class CreateGUI extends javax.swing.JFrame {
 
                 FechaSesion fecha = new FechaSesion();
                 fecha = getValue();                
-                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));*/
+                Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
 
                 AppConfig.getSesionServicio().insertSesion(sesion);
                 System.out.println("Nueva sesion insertada");
