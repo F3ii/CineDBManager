@@ -284,17 +284,23 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sala":{
-                String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
-                String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID, 
+                String thisItemVIP = Boolean.toString((Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2));
+                String thisItemButacas = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
+                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID,
                         thisItemVIP, thisItemButacas);
                 egui.setVisible(true);
                 break;
+//                String thisItemVIP = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+//                String thisItemButacas = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+//                EditGUI egui = new EditGUI(screen,"VIP: ", "Butacas: ", thisItemID,
+//                        thisItemVIP, thisItemButacas);
+//                egui.setVisible(true);
+//                break;
             }
             case "sesion":{
-                String thisItemPrecio = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                String thisItemPrecio = Double.toString((Double) tableModel.getValueAt(jTable1.getSelectedRow(),1));
                 String thisItemDateTime = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI(screen,"Precio de Entrada: ", "Fecha y Hora: ", 
+                EditGUI egui = new EditGUI(screen,"Precio de Entrada: ", "Fecha y Hora: ",
                         thisItemID, thisItemPrecio, thisItemDateTime);
                 egui.setVisible(true);
                 break;
