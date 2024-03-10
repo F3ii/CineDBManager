@@ -116,6 +116,7 @@ public class CinesDbManagerApplication {
 //        AppConfig.getCineServicio().eliminarCinePorID(cine.getIdCine());
 //        System.out.println("Cine eliminado");
 //        System.out.println(AppConfig.getCineServicio().idCineMaximo().toString());
+        System.out.println("");
     }
 
 }
