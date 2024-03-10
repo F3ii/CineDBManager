@@ -7,9 +7,10 @@ package cdbm_ant;
 import calendar.FechaSesion;
 import cinesdbmanager.Context.AppConfig;
 import cinesdbmanager.Modelo.Cine;
-import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
-import cinesdbmanager.Modelo.Sesion;
+
+
+import javax.swing.*;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
@@ -383,9 +384,9 @@ public class EditGUI extends javax.swing.JFrame {
                 System.err.println("Error al actualizar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
-    
+
     private void actualizarCine(){
-        Cine cine = AppConfig.getCineServicio().buscarCine(Integer.parseInt(lblDataID.getText()));
+        Cine cine=AppConfig.getCineServicio().buscarCine(Integer.parseInt((lblDataID.getText())));
         cine.setNombre(tfData1.getText());
         cine.setDireccion(tfData2.getText());
         AppConfig.getCineServicio().actualizarCine(cine);
