@@ -30,6 +30,7 @@ public class Interfaz extends javax.swing.JFrame {
     String cineIdSel = null;
     String salaSel = null;
     String salaIdSel = null;
+    Boolean mostrarPelicula = false;
     
     /**
      * Creates new form Interfaz
@@ -61,6 +62,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         lblCineSel = new javax.swing.JLabel();
+        btnMas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,31 +159,46 @@ public class Interfaz extends javax.swing.JFrame {
         lblCineSel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCineSel.setText("CINES");
 
+        btnMas.setBackground(new java.awt.Color(83, 60, 65));
+        btnMas.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnMas.setForeground(new java.awt.Color(253, 184, 75));
+        btnMas.setText("+");
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCineSel, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                                .addGap(427, 427, 427))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
+                            .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(btnPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(lblCineSel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(btnMas)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -192,20 +209,22 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCineSel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                        .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                            .addComponent(btnMas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(20, 20, 20)
                         .addComponent(btnPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                     .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -225,6 +244,7 @@ public class Interfaz extends javax.swing.JFrame {
             salaIdSel = null;
             salaSel = null;
             btnSesiones.setEnabled(true);
+            btnMas.setVisible(false);
             screen = "sala";
             //cineSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),1));
             cargarTabla();
@@ -244,6 +264,7 @@ public class Interfaz extends javax.swing.JFrame {
         lblCineSel.setText(cineSel);
         screen = "cine";
         btnSesiones.setEnabled(false);
+        btnMas.setVisible(false);
         btnSalas.setEnabled(true);
         cargarTabla();
 
@@ -253,6 +274,7 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         screen = "pelicula";
         btnSesiones.setEnabled(false);
+        btnMas.setVisible(false);
         btnSalas.setEnabled(false);
         cargarTabla();
     }//GEN-LAST:event_btnPeliculasActionPerformed
@@ -263,6 +285,7 @@ public class Interfaz extends javax.swing.JFrame {
             salaIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(), 0));
             salaSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
             screen = "sesion";
+            btnMas.setVisible(true);
             cargarTabla();
             lblCineSel.setText(cineSel + separator + salaSel);
         }catch (ArrayIndexOutOfBoundsException e){
@@ -374,6 +397,18 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+        mostrarPelicula = !mostrarPelicula;
+        if(mostrarPelicula){
+            btnMas.setText("-");
+        }
+        else{
+            btnMas.setText("+");
+        }
+        cargarTabla();
+    }//GEN-LAST:event_btnMasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -441,8 +476,10 @@ public class Interfaz extends javax.swing.JFrame {
                 tableModel.addColumn("Fecha");
                 tableModel.addColumn("Hora");
                 tableModel.addColumn("Pelicula");
-                tableModel.addColumn("idCine");
-                tableModel.addColumn("idSala");
+                if(mostrarPelicula){
+                    tableModel.addColumn("Director");
+                    tableModel.addColumn("Edad PG");
+                }
                 verSesion();
                 break;
             }
@@ -465,14 +502,6 @@ public class Interfaz extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(4).setMinWidth(0);
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(0);
-        }
-        else if(screen == "sesion"){
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(5).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(0);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(6).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(0);
         }
         
     }
@@ -524,7 +553,9 @@ public class Interfaz extends javax.swing.JFrame {
                         s.getPrecio(),
                         s.getFecha(),
                         s.getHora(),
-                        s.getPeliculaByIdPelicula().getNombre()
+                        s.getPeliculaByIdPelicula().getNombre(),
+                        s.getPeliculaByIdPelicula().getDirector(),
+                        s.getPeliculaByIdPelicula().getPgEdad()
                 });
             });
     }
@@ -544,6 +575,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton btnCines;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnMas;
     private javax.swing.JButton btnPeliculas;
     private javax.swing.JButton btnSalas;
     private javax.swing.JButton btnSesiones;
