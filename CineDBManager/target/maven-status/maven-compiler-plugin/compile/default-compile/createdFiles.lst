@@ -7,6 +7,7 @@ cinesdbmanager\Modelo\SalaCine_PK.class
 cdbm_ant\Interfaz$1.class
 cdbm_ant\CreateGUI$3.class
 cdbm_ant\Interfaz.class
+cdbm_ant\CreateGUI$4.class
 cinesdbmanager\Servicio\CineServicio.class
 cinesdbmanager\Servicio\PeliculaServicio.class
 cdbm_ant\CreateGUI.class
@@ -21,6 +22,7 @@ cdbm_ant\Interfaz$5.class
 cdbm_ant\Landing$ImagenLanding.class
 cdbm_ant\Interfaz$7.class
 cinesdbmanager\Repositorio\IPeliculaRepositorio.class
+cdbm_ant\EditGUI$4.class
 calendar\FechaSesion.class
 cdbm_ant\Landing$1.class
 cinesdbmanager\Repositorio\ICineRepositorio.class
@@ -30,6 +32,7 @@ cdbm_ant\EditGUI.class
 cdbm_ant\Landing.class
 cdbm_ant\Interfaz$4.class
 cdbm_ant\EditGUI$1.class
+cdbm_ant\CreateGUI$5.class
 cinesdbmanager\Modelo\Pelicula.class
 cinesdbmanager\Repositorio\ISesionRepositorio.class
 cinesdbmanager\Modelo\Sala.class

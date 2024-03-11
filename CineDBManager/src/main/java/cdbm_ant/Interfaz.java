@@ -165,17 +165,16 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCines, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(btnPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -193,24 +192,24 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCineSel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCines, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnCines, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnSalas, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(btnSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSesiones, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPeliculas, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                     .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -273,45 +272,49 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // Hay que probar, no se si esto funciona bien
-        this.setVisible(false);
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
-        switch(screen){
-            case "cine":{
-                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
-                String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Direccion: ", thisItemID,
-                        thisItemNombre, thisItemDireccion);
-                egui.setVisible(true);
-                break;
+        try{
+            DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+            String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
+            this.setVisible(false);
+            switch(screen){
+                case "cine":{
+                    String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                    String thisItemDireccion = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                    EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Direccion: ", thisItemID,
+                            thisItemNombre, thisItemDireccion);
+                    egui.setVisible(true);
+                    break;
+                }
+                case "sala":{
+                    String thisItemNumSala = tableModel.getValueAt(jTable1.getSelectedRow(),1).toString();
+                    Boolean thisItemVIP = (Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                    String thisItemButacas = tableModel.getValueAt(jTable1.getSelectedRow(),3).toString();
+                    EditGUI egui = new EditGUI(this, screen,"Numero de Sala: ", "VIP: ", "Butacas: ", thisItemID,
+                            thisItemNumSala ,thisItemVIP, thisItemButacas, cineIdSel);
+                    egui.setVisible(true);
+                    break;
+                }
+                case "sesion":{
+                    String thisItemPrecio = Double.toString((Double) tableModel.getValueAt(jTable1.getSelectedRow(),1));
+                    Date thisItemDate = (Date) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                    Time thisItemTime = (Time) tableModel.getValueAt(jTable1.getSelectedRow(),3);
+                    EditGUI egui = new EditGUI(this, screen,"Precio de Entrada: ", "Fecha: " ,"Hora: ",
+                            thisItemID, thisItemPrecio, thisItemDate, thisItemTime, cineIdSel, salaIdSel);
+                    egui.setVisible(true);
+                    break;
+                }
+                case "pelicula":{
+                    String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
+                    String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                    String thisItemEdadPG = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
+                    EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Director", "Edad PG: ", 
+                            thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
+                    egui.setVisible(true);
+                    break;
+                }
             }
-            case "sala":{
-                String thisItemNumSala = tableModel.getValueAt(jTable1.getSelectedRow(),1).toString();
-                Boolean thisItemVIP = (Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                String thisItemButacas = tableModel.getValueAt(jTable1.getSelectedRow(),3).toString();
-                EditGUI egui = new EditGUI(this, screen,"Numero de Sala: ", "VIP: ", "Butacas: ", thisItemID,
-                        thisItemNumSala ,thisItemVIP, thisItemButacas, cineIdSel);
-                egui.setVisible(true);
-                break;
-            }
-            case "sesion":{
-                String thisItemPrecio = Double.toString((Double) tableModel.getValueAt(jTable1.getSelectedRow(),1));
-                Date thisItemDate = (Date) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                Time thisItemTime = (Time) tableModel.getValueAt(jTable1.getSelectedRow(),3);
-                EditGUI egui = new EditGUI(this, screen,"Precio de Entrada: ", "Fecha: " ,"Hora: ",
-                        thisItemID, thisItemPrecio, thisItemDate, thisItemTime, cineIdSel, salaIdSel);
-                egui.setVisible(true);
-                break;
-            }
-            case "pelicula":{
-                String thisItemNombre = (String) tableModel.getValueAt(jTable1.getSelectedRow(),1);
-                String thisItemDirector = (String) tableModel.getValueAt(jTable1.getSelectedRow(),2);
-                String thisItemEdadPG = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),3));
-                EditGUI egui = new EditGUI(this, screen,"Nombre: ", "Director", "Edad PG: ", 
-                        thisItemID, thisItemNombre, thisItemDirector, thisItemEdadPG);
-                egui.setVisible(true);
-                break;
-            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un ítem en la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -345,9 +348,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        try{
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
-
         switch (screen) {
             case "cine":
                 eliminarCineDialog(thisItemID);
@@ -365,6 +368,10 @@ public class Interfaz extends javax.swing.JFrame {
                 System.out.println("Error");
         }
         cargarTabla();
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un ítem en la tabla", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
@@ -430,13 +437,13 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             }
             case "sesion":{
-                    tableModel.addColumn("Precio de Entrada");
-                    tableModel.addColumn("Fecha");
-                    tableModel.addColumn("Hora");
-                    tableModel.addColumn("Pelicula");
-                    tableModel.addColumn("idCine");
-                    tableModel.addColumn("idSala");
-                    verSesion();
+                tableModel.addColumn("Precio de Entrada");
+                tableModel.addColumn("Fecha");
+                tableModel.addColumn("Hora");
+                tableModel.addColumn("Pelicula");
+                tableModel.addColumn("idCine");
+                tableModel.addColumn("idSala");
+                verSesion();
                 break;
             }
             case "pelicula":{
