@@ -45,6 +45,7 @@ public class CreateGUI extends javax.swing.JFrame {
         cbVIP.setVisible(false);
         datePick.setVisible(false);
         timePanel.setVisible(false);
+        cbxPeliculas.setVisible(false);
         this.entidad = entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
         this.getContentPane().setBackground(new Color(255,204,95));
@@ -62,6 +63,7 @@ public class CreateGUI extends javax.swing.JFrame {
         cbVIP.setVisible(true);
         datePick.setVisible(false);
         timePanel.setVisible(false);
+        cbxPeliculas.setVisible(false);
         idCineFK = cineFK;
         this.entidad=entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
@@ -81,6 +83,7 @@ public class CreateGUI extends javax.swing.JFrame {
         tfData2.setVisible(false);
         tfData3.setVisible(false);
         lblData4.setText("Pelicula");
+        cbxPeliculas.setVisible(true);
         cargarPeliculas();
         idCineFK = cineFK;
         idSalaFK = salaFK;
@@ -100,6 +103,7 @@ public class CreateGUI extends javax.swing.JFrame {
         cbVIP.setVisible(false);
         datePick.setVisible(false);
         timePanel.setVisible(false);
+        cbxPeliculas.setVisible(false);
         this.entidad=entidad;
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
         this.getContentPane().setBackground(new Color(255,204,95));
