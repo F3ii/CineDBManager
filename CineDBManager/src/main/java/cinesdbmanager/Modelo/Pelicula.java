@@ -108,12 +108,13 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" +
+        return nombre;
+        /*return "Pelicula{" +
                 "nombre='" + nombre + '\'' +
                 ", director='" + director + '\'' +
                 ", idPelicula=" + idPelicula +
                 ", pgEdad=" + pgEdad +
                 //", sesionsByIdPelicula=" + sesionsByIdPelicula +
-                '}';
+                '}';*/
     }
 }

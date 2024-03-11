@@ -181,12 +181,15 @@ public class EditGUI extends javax.swing.JFrame {
             }
         });
 
+        lblData1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData1.setForeground(new java.awt.Color(83, 60, 65));
         lblData1.setText("Nombre");
 
+        lblData2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData2.setForeground(new java.awt.Color(83, 60, 65));
         lblData2.setText("lblData2");
 
+        lblData3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData3.setForeground(new java.awt.Color(83, 60, 65));
         lblData3.setText("lblData3");
 
@@ -216,22 +219,28 @@ public class EditGUI extends javax.swing.JFrame {
             }
         });
 
+        lblGenericMsg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblGenericMsg.setForeground(new java.awt.Color(83, 60, 65));
         lblGenericMsg.setText("Actualizar elemento");
 
+        lblData0.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData0.setForeground(new java.awt.Color(83, 60, 65));
         lblData0.setText("ID");
 
         lblDataID.setForeground(new java.awt.Color(83, 60, 65));
         lblDataID.setText("ID");
 
+        timePanel.setBackground(new java.awt.Color(255, 204, 95));
+
         lbl_Hora.setText("HORA");
 
+        horaSpinner.setBackground(new java.awt.Color(255, 204, 95));
         horaSpinner.setMaximum(23);
         horaSpinner.setMinimum(0);
 
         lbl_Minuto.setText("MINUTO");
 
+        minutoSpinner.setBackground(new java.awt.Color(255, 204, 95));
         minutoSpinner.setMaximum(59);
         minutoSpinner.setMinimum(0);
 
@@ -243,24 +252,21 @@ public class EditGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_Hora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(horaSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addGap(19, 19, 19)
                 .addComponent(lbl_Minuto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(minutoSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addContainerGap())
         );
         timePanelLayout.setVerticalGroup(
             timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(timePanelLayout.createSequentialGroup()
-                        .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Minuto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbl_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, timePanelLayout.createSequentialGroup()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(horaSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(lbl_Hora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(minutoSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_Minuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -331,8 +337,8 @@ public class EditGUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblData3))
-                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85)
+                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))

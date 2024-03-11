@@ -13,6 +13,7 @@ import cinesdbmanager.Modelo.Sesion;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -40,6 +41,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData2.setText(label2);
         lblData3.setVisible(false);
         tfData3.setVisible(false);
+        lblData4.setVisible(false);
         cbVIP.setVisible(false);
         datePick.setVisible(false);
         timePanel.setVisible(false);
@@ -55,6 +57,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        lblData4.setVisible(false);
         tfData2.setVisible(false);
         cbVIP.setVisible(true);
         datePick.setVisible(false);
@@ -77,6 +80,8 @@ public class CreateGUI extends javax.swing.JFrame {
         timePanel.setVisible(true);
         tfData2.setVisible(false);
         tfData3.setVisible(false);
+        lblData4.setText("Pelicula");
+        cargarPeliculas();
         idCineFK = cineFK;
         idSalaFK = salaFK;
         this.entidad=entidad;
@@ -91,6 +96,7 @@ public class CreateGUI extends javax.swing.JFrame {
         lblData1.setText(label1);
         lblData2.setText(label2);
         lblData3.setText(label3);
+        lblData4.setVisible(false);
         cbVIP.setVisible(false);
         datePick.setVisible(false);
         timePanel.setVisible(false);
@@ -134,6 +140,8 @@ public class CreateGUI extends javax.swing.JFrame {
         horaSpinner = new com.toedter.components.JSpinField();
         lbl_Minuto = new javax.swing.JLabel();
         minutoSpinner = new com.toedter.components.JSpinField();
+        cbxPeliculas = new javax.swing.JComboBox<>();
+        lblData4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,13 +198,17 @@ public class CreateGUI extends javax.swing.JFrame {
         lblGenericMsg.setForeground(new java.awt.Color(83, 60, 65));
         lblGenericMsg.setText("Añadir elemento");
 
+        timePanel.setBackground(new java.awt.Color(255, 204, 95));
+
         lbl_Hora.setText("HORA");
 
+        horaSpinner.setBackground(new java.awt.Color(255, 204, 95));
         horaSpinner.setMaximum(23);
         horaSpinner.setMinimum(0);
 
         lbl_Minuto.setText("MINUTO");
 
+        minutoSpinner.setBackground(new java.awt.Color(255, 204, 95));
         minutoSpinner.setMaximum(59);
         minutoSpinner.setMinimum(0);
 
@@ -207,9 +219,9 @@ public class CreateGUI extends javax.swing.JFrame {
             .addGroup(timePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_Hora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(24, 24, 24)
                 .addComponent(lbl_Minuto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,17 +229,21 @@ public class CreateGUI extends javax.swing.JFrame {
         );
         timePanelLayout.setVerticalGroup(
             timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(timePanelLayout.createSequentialGroup()
-                        .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Minuto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbl_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(lbl_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_Minuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(horaSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+            .addComponent(minutoSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        cbxPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPeliculasActionPerformed(evt);
+            }
+        });
+
+        lblData4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblData4.setForeground(new java.awt.Color(83, 60, 65));
+        lblData4.setText("lblData4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,23 +255,26 @@ public class CreateGUI extends javax.swing.JFrame {
                     .addComponent(lblGenericMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblData2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblData3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblData2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblData3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblData4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfData1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(timePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfData3, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                                .addComponent(tfData3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(datePick, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbVIP, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfData2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)))))
+                                .addComponent(tfData2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                            .addComponent(cbxPeliculas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(164, 164, 164)
@@ -282,13 +301,17 @@ public class CreateGUI extends javax.swing.JFrame {
                         .addComponent(lblData2)
                         .addComponent(cbVIP))
                     .addComponent(datePick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblData3))
-                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
+                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblData4))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -345,29 +368,36 @@ public class CreateGUI extends javax.swing.JFrame {
 
     private void tfData1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData1KeyTyped
         // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
         if("sala".equals(entidad)){
-            char caracter = evt.getKeyChar();
-                if (!Character.isDigit(caracter)) {
-                    evt.consume();
-                }
+            if (!Character.isDigit(caracter)) {
+                evt.consume();
+            }
         }else if("sesion".equals(entidad)){
-            char caracter = evt.getKeyChar();
-                if (!Character.isDigit(caracter) && caracter != '.') {
-                    evt.consume();
-                }
+            if (!Character.isDigit(caracter) && caracter != '.') {
+                evt.consume();
+            }
         }
     }//GEN-LAST:event_tfData1KeyTyped
 
     private void tfData3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData3KeyTyped
         // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
         if("sala".equals(entidad)){
-            char caracter = evt.getKeyChar();
-                if (!Character.isDigit(caracter)) {
-                    evt.consume();
-                }
+            if (!Character.isDigit(caracter)) {
+                evt.consume();
+            }
+        }else if("pelicula".equals(entidad)){
+            if (!Character.isDigit(caracter)) {
+                evt.consume();
+            }
         }
         
     }//GEN-LAST:event_tfData3KeyTyped
+
+    private void cbxPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPeliculasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPeliculasActionPerformed
     
     
     private void añadirPelicula(){
@@ -390,9 +420,19 @@ public class CreateGUI extends javax.swing.JFrame {
         System.out.println(fecha.toString());
         Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
         sesion.setSalaByIdSala(sala1);
-        sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
+        sesion.setPeliculaByIdPelicula((Pelicula) cbxPeliculas.getSelectedItem());
+        //sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
         AppConfig.getSesionServicio().insertSesion(sesion);
     }
+    
+    private void cargarPeliculas(){
+        ArrayList<Pelicula>peliculas= (ArrayList<Pelicula>) AppConfig.getPeliculaServicio().listarTodo();
+        peliculas.forEach(p -> {
+            cbxPeliculas.addItem(p);
+        });
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -433,6 +473,7 @@ public class CreateGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
     private javax.swing.JCheckBox cbVIP;
+    private javax.swing.JComboBox<Pelicula> cbxPeliculas;
     private com.toedter.calendar.JDateChooser datePick;
     private com.toedter.components.JSpinField horaSpinner;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -440,6 +481,7 @@ public class CreateGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblData1;
     private javax.swing.JLabel lblData2;
     private javax.swing.JLabel lblData3;
+    private javax.swing.JLabel lblData4;
     private javax.swing.JLabel lblGenericMsg;
     private javax.swing.JLabel lbl_Hora;
     private javax.swing.JLabel lbl_Minuto;
