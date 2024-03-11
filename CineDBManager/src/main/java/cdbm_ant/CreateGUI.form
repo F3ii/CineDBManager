@@ -31,7 +31,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="lblGenericMsg" max="32767" attributes="0"/>
-                  <Component id="jLabel1" alignment="1" pref="571" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="1" pref="588" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblData1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -44,14 +44,14 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="timePanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tfData3" pref="207" max="32767" attributes="0"/>
+                              <Component id="tfData3" pref="192" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="datePick" max="32767" attributes="0"/>
+                              <Component id="datePick" pref="82" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cbVIP" pref="166" max="32767" attributes="0"/>
+                              <Component id="cbVIP" pref="177" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="tfData2" pref="210" max="32767" attributes="0"/>
+                              <Component id="tfData2" pref="221" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -59,27 +59,27 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnAccept" min="-2" pref="128" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCancel" min="-2" pref="128" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+              <Component id="btnAccept" pref="113" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Component id="btnCancel" pref="114" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="lblGenericMsg" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfData1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tfData2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
                   </Group>
                   <Component id="datePick" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tfData3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,22 +96,28 @@
                   </Group>
                   <Component id="timePanel" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCancel" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="btnAccept" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnCancel" pref="44" max="32767" attributes="0"/>
+                  <Component id="btnAccept" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="tfData1">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfData1KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfData2">
     </Component>
     <Component class="javax.swing.JTextField" name="tfData3">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfData3KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblData1">
       <Properties>
@@ -216,11 +222,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbl_Hora" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="horaSpinner" min="-2" max="-2" attributes="0"/>
+                  <Component id="horaSpinner" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="lbl_Minuto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="minutoSpinner" min="-2" max="-2" attributes="0"/>
+                  <Component id="minutoSpinner" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

@@ -175,6 +175,12 @@ public class EditGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tfData1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfData1ActionPerformed(evt);
+            }
+        });
+
         lblData1.setForeground(new java.awt.Color(83, 60, 65));
         lblData1.setText("Nombre");
 
@@ -263,16 +269,16 @@ public class EditGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addGap(148, 148, 148)
+                .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
+                .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addGap(148, 148, 148))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGenericMsg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,7 +308,7 @@ public class EditGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lblGenericMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,8 +334,8 @@ public class EditGUI extends javax.swing.JFrame {
                     .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
         );
 
@@ -385,6 +391,10 @@ public class EditGUI extends javax.swing.JFrame {
                 System.err.println("Error al actualizar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void tfData1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfData1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfData1ActionPerformed
 
     private void actualizarCine(){
         Cine cine=AppConfig.getCineServicio().buscarCine(Integer.parseInt((lblDataID.getText())));
