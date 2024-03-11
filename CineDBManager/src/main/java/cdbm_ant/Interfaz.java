@@ -241,6 +241,9 @@ public class Interfaz extends javax.swing.JFrame {
                 cineIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(), 0));
                 cineSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
             }
+            if(mostrarPelicula){
+                btnMas.doClick();
+            }
             salaIdSel = null;
             salaSel = null;
             btnSesiones.setEnabled(true);
@@ -257,6 +260,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
         // TODO add your handling code here:
+        if(mostrarPelicula){
+            btnMas.doClick();
+        }
         cineSel = ("Todos los cines");
         cineIdSel = null;
         salaIdSel = null;
@@ -272,6 +278,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
         // TODO add your handling code here:
+        if(mostrarPelicula){
+            btnMas.doClick();
+        }
         screen = "pelicula";
         btnSesiones.setEnabled(false);
         btnMas.setVisible(false);
