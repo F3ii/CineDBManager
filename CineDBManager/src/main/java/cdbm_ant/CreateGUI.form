@@ -33,18 +33,21 @@
                   <Component id="lblGenericMsg" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="1" pref="588" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblData1" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="lblData2" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="lblData3" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblData1" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="lblData2" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="lblData3" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblData4" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="tfData1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="timePanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tfData3" pref="192" max="32767" attributes="0"/>
+                              <Component id="timePanel" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="tfData3" pref="193" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="datePick" pref="82" max="32767" attributes="0"/>
@@ -53,6 +56,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="tfData2" pref="221" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="cbxPeliculas" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -88,15 +92,20 @@
                   </Group>
                   <Component id="datePick" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tfData3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblData3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="timePanel" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="timePanel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbxPeliculas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblData4" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnCancel" pref="44" max="32767" attributes="0"/>
                   <Component id="btnAccept" max="32767" attributes="0"/>
@@ -214,16 +223,21 @@
     <Component class="com.toedter.calendar.JDateChooser" name="datePick">
     </Component>
     <Container class="javax.swing.JPanel" name="timePanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="5f" green="cc" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbl_Hora" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="horaSpinner" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="lbl_Minuto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="minutoSpinner" min="-2" pref="80" max="-2" attributes="0"/>
@@ -233,20 +247,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_Minuto" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="minutoSpinner" min="-2" max="-2" attributes="0"/>
-                              <Component id="horaSpinner" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="lbl_Hora" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <Component id="lbl_Hora" alignment="0" max="32767" attributes="0"/>
+              <Component id="lbl_Minuto" alignment="0" max="32767" attributes="0"/>
+              <Component id="horaSpinner" alignment="0" pref="28" max="32767" attributes="0"/>
+              <Component id="minutoSpinner" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -258,6 +262,9 @@
         </Component>
         <Component class="com.toedter.components.JSpinField" name="horaSpinner">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="5f" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="maximum" type="int" value="23"/>
             <Property name="minimum" type="int" value="0"/>
           </Properties>
@@ -269,11 +276,38 @@
         </Component>
         <Component class="com.toedter.components.JSpinField" name="minutoSpinner">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="5f" green="cc" red="ff" type="rgb"/>
+            </Property>
             <Property name="maximum" type="int" value="59"/>
             <Property name="minimum" type="int" value="0"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JComboBox" name="cbxPeliculas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxPeliculasActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Pelicula&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblData4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3c" red="53" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="lblData4"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
