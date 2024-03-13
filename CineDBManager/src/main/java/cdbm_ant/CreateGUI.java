@@ -155,6 +155,12 @@ public class CreateGUI extends javax.swing.JFrame {
             }
         });
 
+        tfData2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfData2KeyTyped(evt);
+            }
+        });
+
         tfData3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfData3KeyTyped(evt);
@@ -372,16 +378,26 @@ public class CreateGUI extends javax.swing.JFrame {
 
     private void tfData1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData1KeyTyped
         // TODO add your handling code here:
+        // Comenta
         char caracter = evt.getKeyChar();
         if("sala".equals(entidad)){
             if (!Character.isDigit(caracter)) {
                 evt.consume();
             }
         }else if("sesion".equals(entidad)){
-            if (!Character.isDigit(caracter) && caracter != '.') {
+            if (!Character.isDigit(caracter) && caracter != '.' || (tfData1.getText().length() >= 25)
+                    || (tfData1.getText().contains(".") && caracter == '.')) {
                 evt.consume();
             }
-        }
+        }else if("cine".equals(entidad)){
+            if (tfData1.getText().length() >= 25) {
+                evt.consume();
+            }
+        }else if("peliculas".equals(entidad)){
+             if (tfData1.getText().length() >= 25) {
+                evt.consume();
+            }
+        } 
     }//GEN-LAST:event_tfData1KeyTyped
 
     private void tfData3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData3KeyTyped
@@ -402,6 +418,21 @@ public class CreateGUI extends javax.swing.JFrame {
     private void cbxPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPeliculasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxPeliculasActionPerformed
+
+    private void tfData2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData2KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        
+        if("cine".equals(entidad)){
+            if (tfData2.getText().length() >= 50) {
+                evt.consume();
+            }
+        }else if("peliculas".equals(entidad)){
+             if (tfData2.getText().length() >= 25) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_tfData2KeyTyped
     
     
     private void añadirPelicula(){

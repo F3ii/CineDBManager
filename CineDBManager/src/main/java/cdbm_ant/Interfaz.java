@@ -41,6 +41,13 @@ public class Interfaz extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color(255,204,95));
         //cargarTabla();
     }
+    
+    public class NonEditableTableModel extends DefaultTableModel {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -319,8 +326,11 @@ public class Interfaz extends javax.swing.JFrame {
                 }
                 case "sala":{
                     String thisItemNumSala = tableModel.getValueAt(jTable1.getSelectedRow(),1).toString();
-                    Boolean thisItemVIP = (Boolean) tableModel.getValueAt(jTable1.getSelectedRow(),2);
+                    String thisItemSiNo = tableModel.getValueAt(jTable1.getSelectedRow(),2).toString();
+                    Boolean thisItemVIP;
+                    thisItemVIP = "Sí".equals(thisItemSiNo);
                     String thisItemButacas = tableModel.getValueAt(jTable1.getSelectedRow(),3).toString();
+                    
                     EditGUI egui = new EditGUI(this, screen,"Numero de Sala: ", "VIP: ", "Butacas: ", thisItemID,
                             thisItemNumSala ,thisItemVIP, thisItemButacas, cineIdSel);
                     egui.setVisible(true);
@@ -394,7 +404,7 @@ public class Interfaz extends javax.swing.JFrame {
                 AppConfig.getSesionServicio().eliminarSesionPorID(Integer.parseInt(thisItemID));
                 break;
             case "pelicula":
-                AppConfig.getPeliculaServicio().eliminarPeliculaPorID(Integer.parseInt(thisItemID));
+                eliminarPeliculaDialog(thisItemID);
                 break;
             default:
                 System.out.println("Error");
@@ -459,7 +469,7 @@ public class Interfaz extends javax.swing.JFrame {
     protected void cargarTabla() {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
-        tableModel = new DefaultTableModel();
+        tableModel = new NonEditableTableModel();
         // Asignar el modelo de tabla a la JTable
         //jTable1.setModel(tableModel);
         tableModel.addColumn("ID");
@@ -533,6 +543,15 @@ public class Interfaz extends javax.swing.JFrame {
             System.out.println("Eliminar cancelado");
         }
     }
+    private void eliminarPeliculaDialog(String id){
+        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas la pelicula desapareceran tambien sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
+        // Verifica la opción seleccionada por el usuario
+        if (opcion == JOptionPane.YES_OPTION) {
+            AppConfig.getPeliculaServicio().eliminarPeliculaPorID(Integer.parseInt(id));
+        } else {
+            System.out.println("Eliminar cancelado");
+        }
+    }
     private void verCines(){
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
         cines.forEach(c -> {
@@ -546,10 +565,11 @@ public class Interfaz extends javax.swing.JFrame {
     private void verSalas(){
             ArrayList<Sala> salas = (ArrayList<Sala>) AppConfig.getSalaServicio().listarSalasPorIdCine(Integer.valueOf(cineIdSel));
             salas.forEach(s -> {
+                String vip = s.getVip()? "Sí" : "No";
                 tableModel.addRow(new Object[]{
                         s.getIdSala(),
                         s.getNºsala(),
-                        s.getVip(),
+                        vip,
                         s.getNºbutacas()
                 });
             });

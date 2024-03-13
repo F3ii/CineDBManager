@@ -118,11 +118,18 @@
     <Component class="javax.swing.JTextField" name="tfData1">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfData1ActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfData1KeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfData2">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfData2KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfData3">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfData3KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblData1">
       <Properties>
