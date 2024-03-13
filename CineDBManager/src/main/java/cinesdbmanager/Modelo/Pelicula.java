@@ -21,7 +21,7 @@ public class Pelicula {
     @Basic
     @Column(name = "pg_edad", nullable = true)
     private Integer pgEdad;
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
+    @OneToMany(mappedBy = "peliculaByIdPelicula",cascade = CascadeType.ALL)
     private List<Sesion> sesionsByIdPelicula;
 
     public Pelicula() {
