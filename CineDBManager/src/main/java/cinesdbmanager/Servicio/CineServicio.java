@@ -2,10 +2,12 @@ package cinesdbmanager.Servicio;
 
 import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Repositorio.ICineRepositorio;
+import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service

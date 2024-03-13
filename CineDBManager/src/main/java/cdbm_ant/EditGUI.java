@@ -10,6 +10,9 @@ import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
+
+
+import javax.swing.*;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
@@ -172,12 +175,21 @@ public class EditGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tfData1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfData1ActionPerformed(evt);
+            }
+        });
+
+        lblData1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData1.setForeground(new java.awt.Color(83, 60, 65));
         lblData1.setText("Nombre");
 
+        lblData2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData2.setForeground(new java.awt.Color(83, 60, 65));
         lblData2.setText("lblData2");
 
+        lblData3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData3.setForeground(new java.awt.Color(83, 60, 65));
         lblData3.setText("lblData3");
 
@@ -207,22 +219,28 @@ public class EditGUI extends javax.swing.JFrame {
             }
         });
 
+        lblGenericMsg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblGenericMsg.setForeground(new java.awt.Color(83, 60, 65));
         lblGenericMsg.setText("Actualizar elemento");
 
+        lblData0.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblData0.setForeground(new java.awt.Color(83, 60, 65));
         lblData0.setText("ID");
 
         lblDataID.setForeground(new java.awt.Color(83, 60, 65));
         lblDataID.setText("ID");
 
+        timePanel.setBackground(new java.awt.Color(255, 204, 95));
+
         lbl_Hora.setText("HORA");
 
+        horaSpinner.setBackground(new java.awt.Color(255, 204, 95));
         horaSpinner.setMaximum(23);
         horaSpinner.setMinimum(0);
 
         lbl_Minuto.setText("MINUTO");
 
+        minutoSpinner.setBackground(new java.awt.Color(255, 204, 95));
         minutoSpinner.setMaximum(59);
         minutoSpinner.setMinimum(0);
 
@@ -234,24 +252,21 @@ public class EditGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_Hora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(horaSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addGap(19, 19, 19)
                 .addComponent(lbl_Minuto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(minutoSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addContainerGap())
         );
         timePanelLayout.setVerticalGroup(
             timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(timePanelLayout.createSequentialGroup()
-                        .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Minuto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(minutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(horaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbl_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, timePanelLayout.createSequentialGroup()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(horaSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(lbl_Hora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(minutoSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_Minuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -260,16 +275,16 @@ public class EditGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addGap(148, 148, 148)
+                .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
+                .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addGap(148, 148, 148))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblGenericMsg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblData1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +314,7 @@ public class EditGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lblGenericMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,11 +337,11 @@ public class EditGUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblData3))
-                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85)
+                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btnAccept, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
         );
 
@@ -366,14 +381,13 @@ public class EditGUI extends javax.swing.JFrame {
                 fecha = getValue(); //fecha.getDate() y fecha.getTime() para obtener la fecha
                 actualizarSesion(fecha);
                 // Insertar codigo para sesion
-                
                 System.out.println("Se ha actualizado la sesion");
                 this.dispose();
                 gui.cargarTabla();
                 gui.setVisible(true);
                 break;
             case "pelicula":
-                // Insertar codigo para cine
+                actualizarPelicula();
                 System.out.println("Se ha actualizado la pelicula");
                 this.dispose();
                 gui.cargarTabla();
@@ -383,9 +397,13 @@ public class EditGUI extends javax.swing.JFrame {
                 System.err.println("Error al actualizar");
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
-    
+
+    private void tfData1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfData1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfData1ActionPerformed
+
     private void actualizarCine(){
-        Cine cine = AppConfig.getCineServicio().buscarCine(Integer.parseInt(lblDataID.getText()));
+        Cine cine=AppConfig.getCineServicio().buscarCine(Integer.parseInt((lblDataID.getText())));
         cine.setNombre(tfData1.getText());
         cine.setDireccion(tfData2.getText());
         AppConfig.getCineServicio().actualizarCine(cine);
@@ -401,15 +419,19 @@ public class EditGUI extends javax.swing.JFrame {
     }
     
     private void actualizarSesion(FechaSesion fecha){
-        System.out.println("Actualizar sesion lanzado");
-        /*Sesion sesion = AppConfig.getSesionServicio().buscarSesionporIds(Integer.parseInt(idCineFK),
-                Integer.parseInt(idSalaFK), Integer.parseInt(lblDataID.getText()));
-        sesion.setPrecio(Double.parseDouble(lblData1.getText()));
+        Sesion sesion=AppConfig.getSesionServicio().buscarSesionPorId(Integer.parseInt(lblDataID.getText()));
+        sesion.setPrecio(Double.parseDouble(tfData1.getText()));
         sesion.setFecha(fecha.getDate());
         sesion.setHora(fecha.getTime());
-        AppConfig.getSesionServicio().actualizarSesion(sesion);*/
+        AppConfig.getSesionServicio().actualizarSesion(sesion);
     }
-    
+    private void actualizarPelicula(){
+        Pelicula pelicula=AppConfig.getPeliculaServicio().buscarPelicula(Integer.parseInt(lblDataID.getText()));
+        pelicula.setNombre(tfData1.getText());
+        pelicula.setPgEdad(Integer.parseInt(tfData3.getText()));
+        pelicula.setDirector(tfData2.getText());
+        AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
+    }
     /**
      * @param args the command line arguments
      */
