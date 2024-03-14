@@ -21,7 +21,7 @@ public class Pelicula {
     @Basic
     @Column(name = "pg_edad", nullable = true)
     private Integer pgEdad;
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
+    @OneToMany(mappedBy = "peliculaByIdPelicula",cascade = CascadeType.ALL)
     private List<Sesion> sesionsByIdPelicula;
 
     public Pelicula() {
@@ -108,12 +108,13 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" +
+        return nombre;
+        /*return "Pelicula{" +
                 "nombre='" + nombre + '\'' +
                 ", director='" + director + '\'' +
                 ", idPelicula=" + idPelicula +
                 ", pgEdad=" + pgEdad +
                 //", sesionsByIdPelicula=" + sesionsByIdPelicula +
-                '}';
+                '}';*/
     }
 }
