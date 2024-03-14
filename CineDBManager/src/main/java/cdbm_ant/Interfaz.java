@@ -22,26 +22,30 @@ import javax.swing.table.TableColumn;
  *
  * @author danie
  */
+
+// Clase interfaz que actúa como pantalla principal de la aplicación
 public class Interfaz extends javax.swing.JFrame {
     private DefaultTableModel tableModel = new DefaultTableModel();
     final String separator = " > Sala: ";
     String screen = "cine"; //Valores permitidos ("cine", "sala", "sesion", "pelicula")
+    // Variables para movernos entre la jerarquía
     String cineSel = null;
     String cineIdSel = null;
     String salaSel = null;
     String salaIdSel = null;
-    Boolean mostrarPelicula = false;
+    Boolean mostrarPelicula = false; // Mostrar o no datos completos de la película en la sesión
     
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
-        btnCines.doClick();
+        btnCines.doClick(); // Por defecto mostrar los cines, con su respectiva configuración
         this.getContentPane().setBackground(new Color(255,204,95));
         //cargarTabla();
     }
     
+    // No permitir que los elementos sean modificables desde la tabla
     public class NonEditableTableModel extends DefaultTableModel {
     @Override
     public boolean isCellEditable(int row, int column) {
@@ -241,14 +245,15 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //  Al pulsar el boton de navegación Salas
     private void btnSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalasActionPerformed
         // TODO add your handling code here:
         try {
-            if (screen == "cine") {
+            if (screen == "cine") { // Si vamos desde cines, guardar el cine desde el que accedemos
                 cineIdSel = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(), 0));
                 cineSel = tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
             }
-            if(mostrarPelicula){
+            if(mostrarPelicula){ // Cerrar la vista detallada de películas si está abierta
                 btnMas.doClick();
             }
             salaIdSel = null;
@@ -265,9 +270,10 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalasActionPerformed
 
+    //  Al pulsar el boton de navegación Cines
     private void btnCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinesActionPerformed
         // TODO add your handling code here:
-        if(mostrarPelicula){
+        if(mostrarPelicula){ // Cerrar la vista detallada de películas si está abierta
             btnMas.doClick();
         }
         cineSel = ("Todos los cines");
@@ -283,9 +289,10 @@ public class Interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCinesActionPerformed
 
+    //  Al pulsar el boton de navegación Peliculas
     private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
         // TODO add your handling code here:
-        if(mostrarPelicula){
+        if(mostrarPelicula){ // Cerrar la vista detallada de películas si está abierta
             btnMas.doClick();
         }
         screen = "pelicula";
@@ -295,6 +302,7 @@ public class Interfaz extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_btnPeliculasActionPerformed
 
+    //  Al pulsar el boton de navegación Sesiones
     private void btnSesionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionesActionPerformed
         // TODO add your handling code here:
         try {
@@ -309,8 +317,10 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSesionesActionPerformed
 
+    /* Al pulsar boton Editar
+    *  Cambia de ventana a la pantalla de editar con el elemento seleccionado en la tabla
+    */
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // Hay que probar, no se si esto funciona bien
         try{
             DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
             String thisItemID = Integer.toString((Integer) tableModel.getValueAt(jTable1.getSelectedRow(),0));
@@ -360,6 +370,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    /* Al pulsar boton Añadir
+     * Cambia de ventana de Añadir elemento
+     */
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -388,6 +401,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    /* Al pulsar boton Eliminar
+     * Ejecuta la acción de eliminar el item seleccionado en la tabla
+     */
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         try{
@@ -416,14 +432,15 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    // Llama a cargarTabla() ampliando o reduciendo la cantidad de información visible sobre la película de una sesión
     private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
         // TODO add your handling code here:
         mostrarPelicula = !mostrarPelicula;
         if(mostrarPelicula){
-            btnMas.setText("-");
+            btnMas.setText("-"); // Si esta en la vista detallada el botón indica un '-'
         }
         else{
-            btnMas.setText("+");
+            btnMas.setText("+"); // Si no esta en la vista detallada el botón indica un '-'
         }
         cargarTabla();
     }//GEN-LAST:event_btnMasActionPerformed
@@ -465,7 +482,9 @@ public class Interfaz extends javax.swing.JFrame {
                    
 
     // TABLA
-    
+    /*
+    * Carga el módelo de tabla indicado según el tipo de elementos a mostrar
+    */
     protected void cargarTabla() {
         String sql = "SELECT * FROM ";
         sql = sql.concat(screen);
@@ -495,7 +514,7 @@ public class Interfaz extends javax.swing.JFrame {
                 tableModel.addColumn("Fecha");
                 tableModel.addColumn("Hora");
                 tableModel.addColumn("Pelicula");
-                if(mostrarPelicula){
+                if(mostrarPelicula){ // Si abres la vista detallada añadir nuevos campos a mostrar
                     tableModel.addColumn("Director");
                     tableModel.addColumn("Edad PG");
                 }
@@ -511,12 +530,12 @@ public class Interfaz extends javax.swing.JFrame {
             }
             
         }
-        
+
+        // Campos de tabla no visibles
         jTable1.setModel(tableModel);
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-        
         if(screen == "sala"){
             jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
             jTable1.getColumnModel().getColumn(4).setMinWidth(0);
@@ -524,6 +543,8 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
     }
+
+    // DIALOGS PERSONALIZADOS
     private void eliminarCineDialog(String id){
         int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas el cine desaparecera toda la informacion", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
@@ -552,6 +573,9 @@ public class Interfaz extends javax.swing.JFrame {
             System.out.println("Eliminar cancelado");
         }
     }
+
+    // Funciones llamadas por cargarTabla para rellenar los datos según la pantalla en la que nos encontremos
+
     private void verCines(){
         ArrayList<Cine>cines= (ArrayList<Cine>) AppConfig.getCineServicio().listarTodo();
         cines.forEach(c -> {
@@ -565,7 +589,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void verSalas(){
             ArrayList<Sala> salas = (ArrayList<Sala>) AppConfig.getSalaServicio().listarSalasPorIdCine(Integer.valueOf(cineIdSel));
             salas.forEach(s -> {
-                String vip = s.getVip()? "Sí" : "No";
+                String vip = s.getVip()? "Sí" : "No"; // Variable para mostrar Sí o No en lenguaje natural en vez de true o false
                 tableModel.addRow(new Object[]{
                         s.getIdSala(),
                         s.getNºsala(),
