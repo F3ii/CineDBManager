@@ -16,6 +16,8 @@ import javax.swing.JPanel;
  *
  * @author danie
  */
+
+// Clase Landing, actúa como punto de entrada a la aplicación
 public class Landing extends javax.swing.JFrame {
 
     /**
@@ -23,7 +25,7 @@ public class Landing extends javax.swing.JFrame {
      */
     public Landing() {
         initComponents();
-        this.getContentPane().setBackground(new Color(83,60,65));
+        //this.getContentPane().setBackground(new Color(83,60,65)); // No se utiliza en últimas versiones
     }
 
     /**
@@ -80,6 +82,7 @@ public class Landing extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Unico botón del landing, al pulsarlo esconde la pantalla landing y nos lleva a la Pantalla principal
     private void btnLandingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandingActionPerformed
         // TODO add your handling code here:
         Interfaz mainGui = new Interfaz();
@@ -124,9 +127,11 @@ public class Landing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLanding;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1; // Panel para insertar imagen de Palomito
     // End of variables declaration//GEN-END:variables
 
+    // Clase derivada de JPanel para poder introducir en la aplicación una imagen reescalable
+    // La ruta de la imagen parte siempre de la carpeta de resources
     class ImagenLanding extends JPanel{
         //ATRIBUTO
         private Image imagen;

@@ -25,8 +25,8 @@ import java.util.Calendar;
 public class EditGUI extends javax.swing.JFrame {
 
     String entidad; //screen
-    String idCineFK = null;
-    String idSalaFK = null;
+    String idCineFK = null; // Clave ajena
+    String idSalaFK = null; // Clave ajena
     Interfaz gui; // Mantener la interfaz anterior
     /**
      * Creates new form CreateGUI
@@ -72,7 +72,7 @@ public class EditGUI extends javax.swing.JFrame {
         //tfData2.setText(tf2);
         cbVIP.setSelected(tf2);
         tfData3.setText(tf3);
-        
+        tfData2.setVisible(false);
         cbVIP.setVisible(true);
         datePick.setVisible(false);
         timePanel.setVisible(false);
@@ -135,7 +135,8 @@ public class EditGUI extends javax.swing.JFrame {
         lblGenericMsg.setText(("Añadir " + entidad).toUpperCase());
         this.getContentPane().setBackground(new Color(255,204,95));
     }
-    
+
+    // Guardar la fecha con el jDateChooser
     public FechaSesion getValue(){
         Calendar calendar = datePick.getJCalendar().getCalendar();
         int hora = (Integer) horaSpinner.getValue();
@@ -365,6 +366,7 @@ public class EditGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Volver a la pantalla principal sin guardar los cambios
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         // Desaparecer la pantalla
@@ -373,6 +375,7 @@ public class EditGUI extends javax.swing.JFrame {
         System.out.println("Cancelado");
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    // Guardar los cambios en la instancia de la entidad y volver a la pantalla principal
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
         // Llamar a crear con los datos
@@ -419,6 +422,7 @@ public class EditGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfData1ActionPerformed
 
+    // Tipado del texto de entrada y límite de carácteres
     private void tfData1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfData1KeyTyped
         // TODO add your handling code here:
         char caracter = evt.getKeyChar();
