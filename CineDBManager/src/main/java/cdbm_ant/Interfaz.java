@@ -546,7 +546,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // DIALOGS PERSONALIZADOS
     private void eliminarCineDialog(String id){
-        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas el cine desaparecera toda la informacion", "Confirmación", JOptionPane.YES_NO_OPTION);
+        int opcion = JOptionPane.showConfirmDialog(null, "Atención: Si eliminas el cine desapareceran desapareceran tambien todas sus sesiones y salas", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
         if (opcion == JOptionPane.YES_OPTION) {
             AppConfig.getCineServicio().eliminarCinePorID(Integer.parseInt(id));
@@ -556,7 +556,7 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     private void eliminarSalaDialog(String id){
-        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas la sala desapareceran tambien sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
+        int opcion = JOptionPane.showConfirmDialog(null, "Atención: Si eliminas la sala desapareceran tambien todas sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
         if (opcion == JOptionPane.YES_OPTION) {
             AppConfig.getSalaServicio().eliminarSalaPorIdCineSala(Integer.parseInt(cineIdSel),Integer.parseInt(id));
@@ -565,7 +565,7 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     private void eliminarPeliculaDialog(String id){
-        int opcion = JOptionPane.showConfirmDialog(null, "Si eliminas la pelicula desapareceran tambien sus sesiones", "Confirmación", JOptionPane.YES_NO_OPTION);
+        int opcion = JOptionPane.showConfirmDialog(null, "Atención: Si eliminas la pelicula desapareceran tambien las sesiones que la proyecten", "Confirmación", JOptionPane.YES_NO_OPTION);
         // Verifica la opción seleccionada por el usuario
         if (opcion == JOptionPane.YES_OPTION) {
             AppConfig.getPeliculaServicio().eliminarPeliculaPorID(Integer.parseInt(id));
