@@ -1,0 +1,1 @@
+Ejecutar la carpeta CineDBManager
