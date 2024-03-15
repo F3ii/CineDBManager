@@ -9,13 +9,13 @@ import java.sql.Time;
 @Entity
 public class Sesion {
     @Basic
-    @Column(name = "fecha", nullable = true)
+    @Column(name = "fecha", nullable = false)
     private Date fecha;
     @Basic
-    @Column(name = "hora", nullable = true)
+    @Column(name = "hora", nullable = false)
     private Time hora;
     @Basic
-    @Column(name = "precio", nullable = true, precision = 2)
+    @Column(name = "precio", nullable = false, precision = 2)
     private Double precio;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

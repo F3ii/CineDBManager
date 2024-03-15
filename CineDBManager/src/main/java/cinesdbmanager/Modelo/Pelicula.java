@@ -9,10 +9,10 @@ import java.util.List;
 @Entity
 public class Pelicula {
     @Basic
-    @Column(name = "nombre", nullable = true, length = 25)
+    @Column(name = "nombre", nullable = false, length = 25)
     private String nombre;
     @Basic
-    @Column(name = "director", nullable = true, length = 25)
+    @Column(name = "director", nullable = false, length = 25)
     private String director;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
