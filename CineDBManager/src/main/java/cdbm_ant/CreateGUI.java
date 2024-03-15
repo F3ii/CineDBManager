@@ -435,7 +435,8 @@ public class CreateGUI extends javax.swing.JFrame {
             gui.setVisible(true);
             System.out.println("Nueva pelicula insertada");
         }else{
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.",
+                    "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
         }
     }
     private void añadirSala(){
@@ -448,9 +449,11 @@ public class CreateGUI extends javax.swing.JFrame {
             gui.setVisible(true);
             System.out.println("Nueva sala insertada");
         }else{
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.",
+                    "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     private void añadirCine(){
         if (!tfData1.getText().isEmpty() && !tfData2.getText().isEmpty()){
             Cine cine = new Cine(tfData2.getText(), tfData1.getText());
@@ -460,12 +463,15 @@ public class CreateGUI extends javax.swing.JFrame {
             gui.setVisible(true);
             System.out.println("Nuevo cine insertado");
         }else {
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.",
+                    "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     private void añadirSesion(){
         if (!tfData1.getText().isEmpty() && cbxPeliculas.getSelectedItem()!=null) {
-            Sala sala1 = AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK), Integer.parseInt(idSalaFK));
+            Sala sala1 = AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK), 
+                    Integer.parseInt(idSalaFK));
             FechaSesion fecha = new FechaSesion();
             fecha = getValue();
             System.out.println(fecha.toString());
@@ -479,7 +485,8 @@ public class CreateGUI extends javax.swing.JFrame {
             gui.setVisible(true);
             System.out.println("Nueva sesion insertada");
         }else{
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", 
+                    "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
         }
     }
     

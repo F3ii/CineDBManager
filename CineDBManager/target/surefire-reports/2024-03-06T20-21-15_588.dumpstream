@@ -1,5 +1,0 @@
-# Created at 2024-03-06T20:21:15.944
-Boot Manifest-JAR contains absolute paths in classpath 'D:\DAM\CineDBProject\CineDBManager\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
