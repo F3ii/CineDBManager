@@ -383,35 +383,19 @@ public class EditGUI extends javax.swing.JFrame {
             case "cine":
                 actualizarCine();
                 // Insertar codigo para cine
-                System.out.println("Se ha actualizado el cine");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "sala":
                 // Insertar codigo para sala
                 actualizarSala();
-                System.out.println("Se ha actualizado la sala");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "sesion":
                 FechaSesion fecha = new FechaSesion();
                 fecha = getValue(); //fecha.getDate() y fecha.getTime() para obtener la fecha
                 actualizarSesion(fecha);
                 // Insertar codigo para sesion
-                System.out.println("Se ha actualizado la sesion");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "pelicula":
                 actualizarPelicula();
-                System.out.println("Se ha actualizado la pelicula");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             default:
                 System.err.println("Error al actualizar");
@@ -476,34 +460,66 @@ public class EditGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tfData3KeyTyped
 
     private void actualizarCine(){
-        Cine cine=AppConfig.getCineServicio().buscarCine(Integer.parseInt((lblDataID.getText())));
-        cine.setNombre(tfData1.getText());
-        cine.setDireccion(tfData2.getText());
-        AppConfig.getCineServicio().actualizarCine(cine);
+        if(!tfData1.getText().isEmpty() && !tfData2.getText().isEmpty()) {
+            Cine cine = AppConfig.getCineServicio().buscarCine(Integer.parseInt((lblDataID.getText())));
+            cine.setNombre(tfData1.getText());
+            cine.setDireccion(tfData2.getText());
+            AppConfig.getCineServicio().actualizarCine(cine);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Se ha actualizado el cine");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void actualizarSala(){
-        Sala sala = AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK),
-                Integer.parseInt(lblDataID.getText()));
-        sala.setVip(cbVIP.isSelected());
-        sala.setNºbutacas(Integer.valueOf(tfData3.getText()));
-        sala.setNºsala(Integer.valueOf(tfData1.getText()));
-        AppConfig.getSalaServicio().actualizarSala(sala);
+        if(!tfData3.getText().isEmpty() && !tfData1.getText().isEmpty()) {
+            Sala sala = AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK),
+                    Integer.parseInt(lblDataID.getText()));
+            sala.setVip(cbVIP.isSelected());
+            sala.setNºbutacas(Integer.valueOf(tfData3.getText()));
+            sala.setNºsala(Integer.valueOf(tfData1.getText()));
+            AppConfig.getSalaServicio().actualizarSala(sala);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Se ha actualizado la sala");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void actualizarSesion(FechaSesion fecha){
-        Sesion sesion=AppConfig.getSesionServicio().buscarSesionPorId(Integer.parseInt(lblDataID.getText()));
-        sesion.setPrecio(Double.parseDouble(tfData1.getText()));
-        sesion.setFecha(fecha.getDate());
-        sesion.setHora(fecha.getTime());
-        AppConfig.getSesionServicio().actualizarSesion(sesion);
+        if(!tfData1.getText().isEmpty()) {
+            Sesion sesion = AppConfig.getSesionServicio().buscarSesionPorId(Integer.parseInt(lblDataID.getText()));
+            sesion.setPrecio(Double.parseDouble(tfData1.getText()));
+            sesion.setFecha(fecha.getDate());
+            sesion.setHora(fecha.getTime());
+            AppConfig.getSesionServicio().actualizarSesion(sesion);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Se ha actualizado la sesion");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     private void actualizarPelicula(){
-        Pelicula pelicula=AppConfig.getPeliculaServicio().buscarPelicula(Integer.parseInt(lblDataID.getText()));
-        pelicula.setNombre(tfData1.getText());
-        pelicula.setPgEdad(Integer.parseInt(tfData3.getText()));
-        pelicula.setDirector(tfData2.getText());
-        AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
+        if(!tfData1.getText().isEmpty() && !tfData2.getText().isEmpty() && !tfData3.getText().isEmpty()) {
+            Pelicula pelicula = AppConfig.getPeliculaServicio().buscarPelicula(Integer.parseInt(lblDataID.getText()));
+            pelicula.setNombre(tfData1.getText());
+            pelicula.setPgEdad(Integer.parseInt(tfData3.getText()));
+            pelicula.setDirector(tfData2.getText());
+            AppConfig.getPeliculaServicio().actualizarPelicula(pelicula);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Se ha actualizado la pelicula");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     /**
      * @param args the command line arguments

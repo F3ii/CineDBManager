@@ -10,10 +10,10 @@ import java.util.List;
 @IdClass(SalaCine_PK.class)
 public class Sala {
     @Basic
-    @Column(name = "nºbutacas", nullable = true)
+    @Column(name = "nºbutacas", nullable = false)
     private Integer nºbutacas;
     @Basic
-    @Column(name = "nºsala", nullable = true)
+    @Column(name = "nºsala", nullable = false)
     private Integer nºsala;
     @Basic
     @Column(name = "vip", nullable = true)

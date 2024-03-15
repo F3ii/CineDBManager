@@ -10,6 +10,8 @@ import cinesdbmanager.Modelo.Cine;
 import cinesdbmanager.Modelo.Pelicula;
 import cinesdbmanager.Modelo.Sala;
 import cinesdbmanager.Modelo.Sesion;
+
+import javax.swing.*;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
@@ -349,31 +351,15 @@ public class CreateGUI extends javax.swing.JFrame {
         switch (entidad) {
             case "cine":
                 añadirCine();
-                System.out.println("Nuevo cine insertado");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "sala":
                 añadirSala();
-                System.out.println("Nueva sala insertada");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "sesion":
                 añadirSesion();
-                System.out.println("Nueva sesion insertada");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             case "pelicula":
                 añadirPelicula();
-                System.out.println("Nueva pelicula insertada");
-                this.dispose();
-                gui.cargarTabla();
-                gui.setVisible(true);
                 break;
             default:
                 System.err.println("Error al insertar");
@@ -441,28 +427,60 @@ public class CreateGUI extends javax.swing.JFrame {
     
     // Creación de instancias
     private void añadirPelicula(){
-        Pelicula pelicula=new Pelicula(tfData1.getText(),tfData2.getText(),Integer.parseInt(tfData3.getText()));
-        AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+        if(!tfData1.getText().isEmpty() && !tfData2.getText().isEmpty() && !tfData3.getText().isEmpty()) {
+            Pelicula pelicula = new Pelicula(tfData1.getText(), tfData2.getText(), Integer.parseInt(tfData3.getText()));
+            AppConfig.getPeliculaServicio().insertarPelicula(pelicula);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Nueva pelicula insertada");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     private void añadirSala(){
-        Sala sala=new Sala(Integer.valueOf(tfData3.getText()),
-                Integer.valueOf(tfData1.getText()),cbVIP.isSelected(),Integer.parseInt(idCineFK));
-        AppConfig.getSalaServicio().insertarSala(sala);
+        if(!tfData3.getText().isEmpty() && !tfData1.getText().isEmpty()) {
+            Sala sala = new Sala(Integer.valueOf(tfData3.getText()),
+                    Integer.valueOf(tfData1.getText()), cbVIP.isSelected(), Integer.parseInt(idCineFK));
+            AppConfig.getSalaServicio().insertarSala(sala);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Nueva sala insertada");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     private void añadirCine(){
-        Cine cine=new Cine(tfData2.getText(),tfData1.getText());
-        AppConfig.getCineServicio().insertarCine(cine);
+        if (!tfData1.getText().isEmpty() && !tfData2.getText().isEmpty()){
+            Cine cine = new Cine(tfData2.getText(), tfData1.getText());
+            AppConfig.getCineServicio().insertarCine(cine);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Nuevo cine insertado");
+        }else {
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     private void añadirSesion(){
-        Sala sala1=AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK),Integer.parseInt(idSalaFK));
-        FechaSesion fecha = new FechaSesion();
-        fecha = getValue();
-        System.out.println(fecha.toString());
-        Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(),Double.parseDouble(tfData1.getText()));
-        sesion.setSalaByIdSala(sala1);
-        sesion.setPeliculaByIdPelicula((Pelicula) cbxPeliculas.getSelectedItem());
-        //sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
-        AppConfig.getSesionServicio().insertSesion(sesion);
+        if (!tfData1.getText().isEmpty() && cbxPeliculas.getSelectedItem()!=null) {
+            Sala sala1 = AppConfig.getSalaServicio().buscarSalaporIds(Integer.parseInt(idCineFK), Integer.parseInt(idSalaFK));
+            FechaSesion fecha = new FechaSesion();
+            fecha = getValue();
+            System.out.println(fecha.toString());
+            Sesion sesion = new Sesion(fecha.getDate(), fecha.getTime(), Double.parseDouble(tfData1.getText()));
+            sesion.setSalaByIdSala(sala1);
+            sesion.setPeliculaByIdPelicula((Pelicula) cbxPeliculas.getSelectedItem());
+            //sesion.setPeliculaByIdPelicula(AppConfig.getPeliculaServicio().buscarPelicula(AppConfig.getPeliculaServicio().idPeliculaMaximo()));
+            AppConfig.getSesionServicio().insertSesion(sesion);
+            this.dispose();
+            gui.cargarTabla();
+            gui.setVisible(true);
+            System.out.println("Nueva sesion insertada");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Campos Vacíos", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void cargarPeliculas(){
